@@ -1,5 +1,9 @@
-site_name: My Docs
+site_name: Profe Jorge
+site_url: https://jorgelgpz.github.io/cursos/
 
+nav:
+    - Home: 'index.md'
+    - Python: 'python/index.md'
 
 theme:
   name: material
