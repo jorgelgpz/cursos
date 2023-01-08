@@ -5,27 +5,44 @@ nav:
     - Inicio: 'index.md'
     - Python:
       - 'python/index.md'
-      - Introducción a Python: 'python/introduccion-python.md'
-      - Tipos de Datos Primitivos Simples: 'python/tipos-datos-simples.md'
-      - Entrada y Salida por Terminal: 'python/entrada-salida.md'
-      - Condicionales: 'python/condicionales.md'
-      - Bucles: 'python/bucles.md'
-      - Listas: 'python/listas.md'
-      - Tuplas: 'python/tuplas.md'
-      - Diccionarios: 'python/diccionarios.md'
-      - Funciones: 'python/funciones.md'
-      - Programación funcional: 'python/programacion-funcional.md'
-      - Comprensión de Colecciones: 'python/comprension-colecciones.md'
-      - Ficheros: 'python/ficheros.md'
-      - Excepciones: 'python/excepciones.md'
-      - Programación Orientada a Objetos: 'python/objetos.md'
-      - Módulos: 'python/modulos.md'
-      - La librería Datetime: 'python/datetime.md'
-      - La librería Numpy: 'python/numpy.md'
-      - La librería Pandas: 'python/pandas.md'
-      - La librería Matplotlib: 'python/matplotlib.md'
-      - Depuración de código: 'python/depuracion.md'
-      - Referencias: 'python/referencias.md'
+      - Manual:
+        - 'python/manual/index.md'
+        - Introducción a Python: 'python/manual/introduccion-python.md'
+        - Tipos de Datos Primitivos Simples: 'python/manual/tipos-datos-simples.md'
+        - Entrada y Salida por Terminal: 'python/manual/entrada-salida.md'
+        - Condicionales: 'python/manual/condicionales.md'
+        - Bucles: 'python/manual/bucles.md'
+        - Listas: 'python/manual/listas.md'
+        - Tuplas: 'python/manual/tuplas.md'
+        - Diccionarios: 'python/manual/diccionarios.md'
+        - Funciones: 'python/manual/funciones.md'
+        - Programación funcional: 'python/manual/programacion-funcional.md'
+        - Comprensión de Colecciones: 'python/manual/comprension-colecciones.md'
+        - Ficheros: 'python/manual/ficheros.md'
+        - Excepciones: 'python/manual/excepciones.md'
+        - Programación Orientada a Objetos: 'python/manual/objetos.md'
+        - Módulos: 'python/manual/modulos.md'
+        - La librería Datetime: 'python/manual/datetime.md'
+        - La librería Numpy: 'python/manual/numpy.md'
+        - La librería Pandas: 'python/manual/pandas.md'
+        - La librería Matplotlib: 'python/manual/matplotlib.md'
+        - Depuración de código: 'python/manual/depuracion.md'
+        - Referencias: 'python/manual/referencias.md'
+      - Ejercicios:
+        - 'python/ejercicios/index.md'
+        - Tipos de Datos Simples: 'python/ejercicios/tipos-datos.md'
+        - Cadenas: 'python/ejercicios/cadenas.md'
+        - Condicionales: 'python/ejercicios/condicionales.md'
+        - Bucles: 'python/ejercicios/bucles.md'
+        - Listas y Tuplas: 'python/ejercicios/listas-tuplas.md'
+        - Diccionarios: 'python/ejercicios/diccionarios.md'
+        - Funciones: 'python/ejercicios/funciones.md'
+        - Programación Funcional: 'python/ejercicios/programacion-funcional.md'
+        - Ficheros: 'python/ejercicios/ficheros.md'
+        - Depuración: 'python/ejercicios/depuracion.md'
+        - Librería Pandas: 'python/ejercicios/pandas.md'
+        - Librería Matplotlib: 'python/ejercicios/matplotlib.md'
+
 
 theme:
   name: material
@@ -61,8 +78,14 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.critic
+  - pymdownx.arithmatex:
+      generic: true
 
 extra:
   # Remove the footer display
   generator: false
 
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

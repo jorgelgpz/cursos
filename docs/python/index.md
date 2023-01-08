@@ -1,28 +1,22 @@
-# Manual de Python
+# Programación con Python
+## [**Manual de Python**](manual/index.md)
+Introducción a la programación con Python con ejemplos. 
+## [**Ejercicios de Programación con Python**](ejercicios/index.md)
+Ejercicios de programación con Python con soluciones. 
 
-[Python](https://www.python.org/) es uno de los lenguajes de programación más extendidos que se caracteriza por ser fácil de aprender debido a que su sintaxis es fácil de entender para los humanos.
-En este manual se presentan los conceptos básicos para iniciarse en la programación con este lenguaje.  
 
-## Tabla de contenidos
+[//]: # (## [**Exámenes de Programación con Python**]&#40;/docencia/python/examenes/&#41;)
 
-- [Introducción a Python](introduccion-python.md)
-- [Tipos de Datos Primitivos Simples](tipos-datos-simples.md)
-- [Entrada y Salida por Terminal](entrada-salida.md)
-- [Condicionales](condicionales.md)
-- [Bucles](bucles.md)
-- [Listas](listas.md)
-- [Tuplas](tuplas.md)
-- [Diccionarios](diccionarios.md)
-- [Funciones](funciones.md)
-- [Programación funcional](programacion-funcional.md)
-- [Comprensión de Colecciones](comprension-colecciones.md)
-- [Ficheros](ficheros.md)
-- [Excepciones](excepciones.md)
-- [Programación Orientada a Objetos](objetos.md)
-- [Módulos](modulos.md)
-- [La librería Datetime](datetime.md)
-- [La librería Numpy](numpy.md)
-- [La librería Pandas](pandas.md)
-- [La librería Matplotlib](matplotlib.md)
-- [Depuración de código](depuracion.md)
-- [Referencias](referencias.md)
+[//]: # (Exámenes de Programación con Python de los últimos cursos con soluciones. )
+
+[//]: # (## [**Trabajos de Programación con Python**]&#40;/docencia/python/trabajos/&#41;)
+
+[//]: # (Trabajos de Programación con Python de los últimos cursos con soluciones. )
+
+[//]: # (## [**Retos de Programación con Python**]&#40;/docencia/python/retos/&#41;)
+
+[//]: # (Retos de programación con Python con soluciones )
+
+[//]: # (## [**Herramientas de programación**]&#40;/docencia/python/herramientas/&#41;)
+
+[//]: # (Algunas herramientas que te harán las vida más fácil. )

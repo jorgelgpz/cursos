@@ -180,7 +180,7 @@ Para leer un fichero de internet hay que utilizar la función `urlopen` del mód
 
 ```python linenums="1"
 from urllib import request
-f = request.urlopen('https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/README.md')
+f = request.urlopen('https://raw.githubusercontent.com/jorgelgpz/cursos/main/README.md')
 datos = f.read()
 print(datos.decode('utf-8'))
 ```

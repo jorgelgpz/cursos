@@ -11,7 +11,7 @@ aliases:
 
 [Pandas](https://pandas.pydata.org) es una librería de Python especializada en el manejo y análisis de estructuras de datos.
 
-![Logo librería Pandas](../assets/pandas-logo.png)
+![Logo librería Pandas](../../assets/pandas-logo.png)
 
 Las principales características de esta librería son:
 
@@ -40,7 +40,7 @@ Dispone de un índice que asocia un nombre a cada elemento del la serie, a trav�
 
 Ejemplo. La siguiente serie contiene las asignaturas de un curso.
 
-![Ejemplo de serie](../assets/pandas-series.png)
+![Ejemplo de serie](../../assets/pandas-series.png)
 
 ## Creación de series
 
@@ -379,7 +379,7 @@ Un DataFrame contiene dos índices, uno para las filas y otro para las columnas,
 
 **Ejemplo**. El siguiente DataFrame contiene información sobre los alumnos de un curso. Cada fila corresponde a un alumno y cada columna a una variable.
 
-![Ejemplo de DataFrame](../assets/pandas-dataframe.png)
+![Ejemplo de DataFrame](../../assets/pandas-dataframe.png)
 
 ## Creación de un DataFrame
 
@@ -1018,7 +1018,7 @@ print(df.dropna())
 
 En muchas aplicaciones es útil agrupar los datos de un DataFrame de acuerdo a los valores de una o varias columnas (categorías), como por ejemplo el sexo o el país.
 
-![División en grupos de un DataFrame](../assets/pandas-grupos.png)
+![División en grupos de un DataFrame](../../assets/pandas-grupos.png)
 
 ### Dividir un DataFrame en grupos
 
@@ -1090,7 +1090,7 @@ M     34.666667  59.500000  1.676667     207.200
 
 A menudo la disposición de los datos en un DataFrame no es la adecuada para su tratamiento y es necesario reestructurar el DataFrame. Los datos que contiene un DataFrame pueden organizarse en dos formatos: ancho y largo.
 
-![Formatos de un DataFrame](../assets/formatos-dataframe.png)
+![Formatos de un DataFrame](../../assets/formatos-dataframe.png)
 
 ### Convertir un DataFrame a formato largo
 
@@ -1154,11 +1154,11 @@ Dos o más DataFrames pueden combinarse en otro DataFrame. La combinación puede
 
 - **Concatenación de filas**. Las filas de los DataFrames se concatenan unas a continuación de las otras para formar el nuevo DataFrame. Para ello es necesario que los DataFrames que se combinen tengan el mismo índice de columnas.
 
-    ![Concatenación de DataFrames por filas](../assets/pandas-concatenacion-filas.png)
+    ![Concatenación de DataFrames por filas](../../assets/pandas-concatenacion-filas.png)
 
 - **Concatenación de columnas**. Las columnas de los DataFrames se concatenan unas a continuación de las otras para formar el nuevo DataFrame. Para ello es necesario que los DataFrames que se combinen tengan el mismo índice de filas.
 
-    ![Concatenación de DataFrames por columnas](../assets/pandas-concatenacion-columnas.png)
+    ![Concatenación de DataFrames por columnas](../../assets/pandas-concatenacion-columnas.png)
 
 Para concatenar dos o más DataFrames se utiliza el siguiente método:
 

@@ -13,7 +13,7 @@ Incorpora una nueva clase de objetos llamados **arrays** que permite representar
 
 La ventaja de Numpy frente a las listas predefinidas en Python es que el procesamiento de los arrays se realiza mucho más rápido (hasta 50 veces más) que las listas, lo cual la hace ideal para el procesamiento de vectores y matrices de grandes dimensiones.
 
-![Logo librería numpy](../assets/numpy-logo.png)
+![Logo librería numpy](../../assets/numpy-logo.png)
 
 ## La clase de objetos `array`
 
@@ -21,7 +21,7 @@ Un array es una estructura de datos de un mismo tipo organizada en forma de tabl
 
 Las dimensiones de un array también se conocen como **ejes**.
 
-![Arrays](../assets/arrays.png)
+![Arrays](../../assets/arrays.png)
 
 ## Creación de arrays
 
