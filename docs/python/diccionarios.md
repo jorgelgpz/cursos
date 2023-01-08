@@ -20,10 +20,10 @@ Se caracterizan por:
 - Son mutables, es decir, pueden alterarse durante la ejecución de un programa.
 - Las claves son únicas, es decir, no pueden repetirse en un mismo diccionario, y pueden ser de cualquier tipo de datos inmutable.
 
-```python
+```python linenums="1"
 # Diccionario vacío
 type({})
-<class 'dict'>
+# output <class 'dict'>
 # Diccionario con elementos de distintos tipos
 {'nombre':'Alfredo', 'despacho': 218, 'email':'asalber@ceu.es'}
 # Diccionarios anidados
@@ -35,17 +35,13 @@ type({})
 - `d[clave]` devuelve el valor del diccionario `d` asociado a la clave `clave`. Si en el diccionario no existe esa clave devuelve un error.
 - `d.get(clave, valor)` devuelve el valor del diccionario `d` asociado a la clave `clave`. Si en el diccionario no existe esa clave devuelve `valor`, y si no se especifica un valor por defecto devuelve `None`.
 
-```python
->>> a = {'nombre':'Alfredo', 'despacho': 218, 'email':'asalber@ceu.es'}
->>> a['nombre']
-'Alfredo'
->>> a['despacho'] = 210
->>> a
-{'nombre':'Alfredo', 'despacho': 218, 'email':'asalber@ceu.es'}
->>> a.get('email')
-'asalber@ceu.es'
->>> a.get('universidad', 'CEU')
-'CEU'
+```python linenums="1"
+a = {'nombre':'Alfredo', 'despacho': 218, 'email':'asalber@ceu.es'}
+a['nombre'] # output 'Alfredo'
+a['despacho'] = 210
+a # output {'nombre':'Alfredo', 'despacho': 218, 'email':'asalber@ceu.es'}
+a.get('email') # output 'asalber@ceu.es'
+a.get('universidad', 'CEU') # output 'CEU'
 ```
 
 ### Operaciones que no modifican un diccionario
@@ -59,20 +55,14 @@ type({})
 - `d.values()` : Devuelve un iterador sobre los valores de un diccionario.
 - `d.items()` : Devuelve un iterador sobre los pares clave-valor de un diccionario.
 
-```python
->>> a = {'nombre':'Alfredo', 'despacho': 218, 'email':'asalber@ceu.es'}
->>> len(a)
-3
->>> min(a)
-'despacho'
->>> 'email' in a
-True
->>> a.keys()
-dict_keys(['nombre', 'despacho', 'email'])
->>> a.values()
-dict_values(['Alfredo', 218, 'asalber@ceu.es'])
->>> a.items()
-dict_items([('nombre', 'Alfredo'), ('despacho', 218), ('email', 'asalber@ceu.es')])
+```python linenums="1"
+a = {'nombre':'Alfredo', 'despacho': 218, 'email':'asalber@ceu.es'}
+len(a) # output 3
+min(a) # output 'despacho'
+'email' in a # output True
+a.keys() # output dict_keys(['nombre', 'despacho', 'email'])
+a.values() # output dict_values(['Alfredo', 218, 'asalber@ceu.es'])
+a.items() # output dict_items([('nombre', 'Alfredo'), ('despacho', 218), ('email', 'asalber@ceu.es')])
 ```
 
 ### Operaciones que modifican un diccionario
@@ -85,25 +75,18 @@ dict_items([('nombre', 'Alfredo'), ('despacho', 218), ('email', 'asalber@ceu.es'
 - `d.clear()` : Elimina todos los pares del diccionario `d` de manera que se queda vacío.
 
 
-```python
->>> a = {'nombre':'Alfredo', 'despacho': 218, 'email':'asalber@ceu.es'}
->>> a['universidad'] = 'CEU'
->>> a
-{'nombre': 'Alfredo', 'despacho': 218, 'email': 'asalber@ceu.es', 'universidad': 'CEU'}
->>> a.pop('despacho')
-218
->>> a
-{'nombre': 'Alfredo', 'email': 'asalber@ceu.es', 'universidad': 'CEU'}
->>> a.popitem()
-('universidad', 'CEU')
->>> a
-{'nombre': 'Alfredo', 'email': 'asalber@ceu.es'}
->>> del a['email']
->>> a
-{'nombre': 'Alfredo'}
->>> a.clear()
->>> a
-{}
+```python linenums="1"
+a = {'nombre':'Alfredo', 'despacho': 218, 'email':'asalber@ceu.es'}
+a['universidad'] = 'CEU'
+a # output {'nombre': 'Alfredo', 'despacho': 218, 'email': 'asalber@ceu.es', 'universidad': 'CEU'}
+a.pop('despacho') # output 218
+a # output {'nombre': 'Alfredo', 'email': 'asalber@ceu.es', 'universidad': 'CEU'}
+a.popitem() # output ('universidad', 'CEU')
+a # output {'nombre': 'Alfredo', 'email': 'asalber@ceu.es'}
+del a['email']
+a # output {'nombre': 'Alfredo'}
+a.clear()
+a # output {}
 ```
 
 ### Copia de diccionarios
@@ -114,28 +97,22 @@ Existen dos formas de copiar diccionarios:
 - **Copia por valor** `d1 = list(d2)`: Crea una copia del diccionario asociado a `d2` en una dirección de memoria diferente y se la asocia a `d1`. Las variables apuntan a direcciones de memoria diferentes que contienen los mismos datos. Cualquier cambio que hagamos a través de `l1` no afectará al diccionario de `l2` y viceversa.
 
 
-```python
->>> a = {1:'A', 2:'B', 3:'C'}
->>> # copia por referencia
->>> b = a
->>> b
-{1:'A', 2:'B', 3:'C'}
->>> b.pop(2)
->>> b
-{1:'A', 3:'C'}
->>> a
-{1:'A', 3:'C'}
+```python linenums="1"
+a = {1:'A', 2:'B', 3:'C'}
+# copia por referencia
+b = a
+b # output {1:'A', 2:'B', 3:'C'}
+b.pop(2)
+b # output {1:'A', 3:'C'}
+a # output {1:'A', 3:'C'}
 ```
 
-```python
->>> a = {1:'A', 2:'B', 3:'C'}
->>> # copia por referencia
->>> b = dict(a)
->>> b
-{1:'A', 2:'B', 3:'C'}
->>> b.pop(2)
->>> b
-{1:'A', 3:'C'}
->>> a
-{1:'A', 2:'B', 3:'C'}
+```python linenums="1"
+a = {1:'A', 2:'B', 3:'C'}
+# copia por referencia
+b = dict(a)
+b # output {1:'A', 2:'B', 3:'C'}
+b.pop(2)
+b # output {1:'A', 3:'C'}
+a # output {1:'A', 2:'B', 3:'C'}
 ```

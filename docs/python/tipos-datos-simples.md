@@ -30,17 +30,12 @@ Estos datos son inmutables, es decir, su valor es constante y no puede cambiar.
 
 La clase a la que pertenece un dato se obtiene con el comando `type()`
 
-```python
->>> type(1)
-<class 'int'>
->>> type("Hola")
-<class 'str'>
->>> type([1, "dos", [3, 4], True])
-<class 'list'>
->>>type({'pi':3.1416, 'e':2.718})
-<class 'dict'>
->>>type((1, 'dos', 3))
-<class 'tuple'>
+```python linenums="1"
+type(1) # output <class 'int'>
+type("Hola") # output <class 'str'>
+type([1, "dos", [3, 4], True]) # output <class 'list'>
+type({'pi':3.1416, 'e':2.718}) # output <class 'dict'>
+type((1, 'dos', 3)) # output <class 'tuple'>
 ```
 
 ## Números (clases `int` y `float`)
@@ -48,13 +43,10 @@ La clase a la que pertenece un dato se obtiene con el comando `type()`
 Secuencia de dígitos (pueden incluir el - para negativos y el . para decimales) que representan números.
 Pueden ser enteros (`int`) o reales (`float`).
 
-```python
->>> type(1)
-<class 'int'>
->>> type(-2)
-<class 'int'>
->>> type(2.3)
-<class 'float'>
+```python linenums="1"
+type(1) # output <class 'int'>
+type(-2) # output <class 'int'>
+type(2.3) # output <class 'float'>
 ```
 
 ### Operadores aritméticos
@@ -63,27 +55,22 @@ Pueden ser enteros (`int`) o reales (`float`).
 
 Orden de prioridad de evaluación:
 
-|       |                        |
-| :---: | :--------------------: |
+| Orden |        Operador        |
+|:-----:|:----------------------:|
 |   1   | Funciones predefinidas |
 |   2   |       Potencias        |
 |   3   | Productos y cocientes  |
 |   4   |     Sumas y restas     |
-|       |                        |
+
 
 Se puede saltar el orden de evaluación utilizando paréntesis `( )`.
 
-```python
->>> 2+3
-5
->>> 5*-2
--10
->>> 5/2
-2.5
->>> 5//2
-2
->>> (2+3)**2
-25
+```python linenums="1"
+2+3 # output 5
+5*-2 # output -10
+5/2 # output 2.5
+5//2 # output 2
+(2+3)**2 # output 25
 ```
 
 ### Operadores lógicos con números
@@ -92,20 +79,17 @@ Devuelven un valor lógico o booleano.
 
 - Operadores lógicos: `==` (igual que), `>` (mayor que), `<` (menor que), `>=` (mayor o igual que), `<=` (menor o igual que), `!=` (distinto de).
 
-```python
->>> 3==3
-True
->>> 3.1<=3
-False
->>> -1!=1
-True
+```python linenums="1"
+3==3 # output True
+3.1<=3 # output False
+-1!=1 # output True
 ```
 
 ## Cadenas (clase `str`)
 
 Secuencia de caracteres alfanuméricos que representan texto. Se escriben entre comillas sencillas ' o dobles ".
 
-```python
+```python linenums="1"
 'Python'
 "123"
 'True'
@@ -123,10 +107,10 @@ Secuencia de caracteres alfanuméricos que representan texto. Se escriben entre 
 
 Cada carácter tiene asociado un índice que permite acceder a él.
 
-|     Cadena      |  `P`  |  `y`  |  `t`  |  `h`  |  `o`  |  `n`  |
-| :-------------: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Índice positivo |   0   |   1   |   2   |   3   |   4   |   5   |
-| Índice negativo |  -6   |  -5   |  -4   |  -3   |  -2   |  -1   |
+|     Cadena      | `P` | `y` | `t` | `h` | `o` | `n` |
+|:---------------:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Índice positivo |  0  |  1  |  2  |  3  |  4  |  5  |
+| Índice negativo | -6  | -5  | -4  | -3  | -2  | -1  |
 
 - `c[i]` devuelve el carácter de la cadena `c` con el índice `i`.
 
@@ -136,14 +120,14 @@ También se pueden utilizar índices negativos para recorrer la cadena del final
 
 <i class="fa fa-exclamation-triangle" style="color:red;"></i> _El índice del último carácter de la cadena es -1._
 
-```python
->>> 'Python'[0]
-'P'
->>> 'Python'[1]
-'y'
->>> 'Python'[-1]
-'n'
->>> 'Python'[6]
+```python linenums="1"
+'Python'[0] # output 'P'
+'Python'[1] # output 'y'
+'Python'[-1] # output 'n'
+'Python'[6]
+```
+`output`
+```python 
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 IndexError: string index out of range
@@ -153,19 +137,13 @@ IndexError: string index out of range
 
 - `c[i:j:k]` : Devuelve la subcadena de `c` desde el carácter con el índice `i` hasta el carácter anterior al índice `j`, tomando caracteres cada `k`.
 
-```python
->>> 'Python'[1:4]
-'yth'
->>> 'Python'[1:1]
-''
->>> 'Python'[2:]
-'thon'
->>> 'Python'[:-2]
-'Pyth'
->>> 'Python'[:]
-'Python'
->>> 'Python'[0:6:2]
-'Pto'
+```python linenums="1"
+'Python'[1:4] # output 'yth'
+'Python'[1:1] # output ''
+'Python'[2:] # output 'thon'
+'Python'[:-2] # output 'Pyth'
+'Python'[:] # output 'Python'
+'Python'[0:6:2] # output 'Pto'
 ```
 
 ### Operaciones con cadenas
@@ -175,17 +153,17 @@ IndexError: string index out of range
 - `c1 in c2` : Devuelve `True` si `c1` es una cadena concenida en `c2` y `False` en caso contrario.
 - `c1 not in c2` : Devuelve `True` si `c1` es una cadena no concenida en `c2` y `False` en caso contrario.
 
-```python
->>> 'Me gusta ' + 'Python'
-'Me gusta Python'
->>> 'Python' * 3
-'PythonPythonPython'
->>> 'y' in 'Python'
-True
->>> 'tho' in 'Python'
-True
->>> 'to' not in 'Python'
-True
+```python linenums="1"
+'Me gusta ' + 'Python'
+# output 'Me gusta Python'
+'Python' * 3
+# output 'PythonPythonPython'
+'y' in 'Python'
+# output True
+'tho' in 'Python'
+# output True
+'to' not in 'Python'
+# output True
 ```
 
 ### Operaciones de comparación de cadenas
@@ -199,17 +177,12 @@ True
 
 <i class="fa fa-exclamation-triangle" style="color:red;"></i> _Utilizan el orden establecido en el [código ASCII](https://www.codigosascii.com/)_.
 
-```python
->>> 'Python' == 'python'
-False
->>> 'Python' < 'python'
-True
->>> 'a' > 'Z'
-True
->>> 'A' >= 'Z'
-False
->>> '' < 'Python'
-True
+```python linenums="1"
+'Python' == 'python' # output False
+'Python' < 'python' # output True
+'a' > 'Z' # output True
+'A' >= 'Z' # output False
+'' < 'Python' # output True
 ```
 
 ### Funciones de cadenas
@@ -225,32 +198,24 @@ Si no se especifica el delimitador utiliza por defecto el espacio en blanco.
 
 <!-- TODO: Incluir más funciones de cadenas como replace -->
 
-```python
->>> len('Python')
-6
->>> min('Python')
-'P'
->>> max('Python')
-'y'
->>> 'Python'.upper()
-'PYTHON'
->>> 'A,B,C'.split(',')
-['A', 'B', 'C']
->>> 'I love Python'.split()
-['I', 'love', 'Python']
+```python linenums="1"
+len('Python') # output 6
+min('Python') # output 'P'
+max('Python') # output 'y'
+'Python'.upper() # output 'PYTHON'
+'A,B,C'.split(',') # output ['A', 'B', 'C']
+'I love Python'.split() # output ['I', 'love', 'Python']
 ```
 
 ### Cadenas formateadas (`format()`)
 
 - `c.format(valores)`: Devuelve la cadena `c` tras sustituir los valores de la secuencia `valores` en los marcadores de posición de `c`. Los marcadores de posición se indican mediante llaves `{}` en la cadena `c`, y el reemplazo de los valores se puede realizar por posición, indicando en número de orden del valor dentro de las llaves, o por nombre, indicando el nombre del valor, siempre y cuando los valores se pasen con el formato `nombre = valor`.
 
-```python
->>> 'Un {} vale {} {}'.format('€', 1.12, '$')
-'Un € vale 1.12 $'
->>> 'Un {2} vale {1} {0}'.format('€', 1.12, '$')
-'Un $ vale 1.12 €'
->>> 'Un {moneda1} vale {cambio} {moneda2}'.format(moneda1 = '€', cambio = 1.12, moneda2 = '$')
-'Un € vale 1.12 $'
+```python linenums="1"
+'Un {} vale {} {}'.format('€', 1.12, '$') # output 'Un € vale 1.12 $'
+'Un {2} vale {1} {0}'.format('€', 1.12, '$') # output 'Un $ vale 1.12 €'
+'Un {moneda1} vale {cambio} {moneda2}'.format(moneda1 = '€', cambio = 1.12, moneda2 = '$')
+# output 'Un € vale 1.12 $'
 ```
 
 Los marcadores de posición, a parte de indicar la posición de los valores de reemplazo, pueden indicar también el formato de estos. Para ello se utiliza la siguiente sintaxis:
@@ -261,13 +226,13 @@ Los marcadores de posición, a parte de indicar la posición de los valores de r
 - `{:nd}` : Formatea el valor como un número entero con `n` caracteres rellenando con espacios blancos por la izquierda.
 - `{:n.mf}` : Formatea el valor como un número real con un tamaño de `n` caracteres (incluído el separador de decimales) y `m` cifras decimales, rellenando con espacios blancos por la izquierda.
 
-```python
->>> 'Hoy es {:^10}, mañana {:10} y pasado {:>10}'.format('lunes', 'martes', 'miércoles')
-'Hoy es   lunes   , mañana martes     y pasado  miércoles'
->>> 'Cantidad {:5d}'.format(12)'
-'Cantidad    12'
->>> 'Pi vale {:8.4f}'.format(3.141592)
-'Pi vale   3.1416'
+```python linenums="1"
+'Hoy es {:^10}, mañana {:10} y pasado {:>10}'.format('lunes', 'martes', 'miércoles')
+# output 'Hoy es   lunes   , mañana martes     y pasado  miércoles'
+'Cantidad {:5d}'.format(12)
+# output 'Cantidad    12'
+'Pi vale {:8.4f}'.format(3.141592)
+# output 'Pi vale   3.1416'
 ```
 
 ## Datos lógicos o booleanos (clase `bool`)
@@ -286,21 +251,17 @@ Contiene únicamente dos elementos `True` y `False` que representan los valores 
 ### Tabla de verdad
 
 |   `x`   |   `y`   | `not x` | `x and y` | `x or y` |
-| :-----: | :-----: | :-----: | :-------: | :------: |
+|:-------:|:-------:|:-------:|:---------:|:--------:|
 | `False` | `False` | `True`  |  `False`  | `False`  |
 | `False` | `True`  | `True`  |  `False`  |  `True`  |
 | `True`  | `False` | `False` |  `False`  |  `True`  |
 | `True`  | `True`  | `False` |  `True`   |  `True`  |
 
-```python
->>> not True
-False
->>> False or True
-True
->>> True and False
-False
->>> True and True
-True
+```python linenums="1"
+not True # output False
+False or True # output True
+True and False # output False
+True and True # output True
 ```
 
 ## Conversión de datos primitivos simples
@@ -337,7 +298,7 @@ A diferencia de otros lenguajes no tienen asociado un tipo y no es necesario dec
 
 Para asignar un valor a una variable se utiliza el operador `=` y para borrar una variable se utiliza la instrucción `del`.
 
-```python
+```python linenums="1"
 lenguaje = 'Python'
 x = 3.14
 y = 3 + 2

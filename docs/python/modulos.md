@@ -29,22 +29,23 @@ Python permite importar un módulo completo o sólo algunas partes de él. Cuand
 
 <i class="fa fa-exclamation-triangle" style="color:red;"></i>Cuando se importen módulos de esta manera hay que tener cuidado de que no haya coincidencias en los nombres de funciones, variables u otros objetos.
 
+```python linenums="1"
+import calendar
+print(calendar.month(2023, 8))
+```
+`output`
 ```python
->>> import calendar
->>> print(calendar.month(2019, 4))
-April 2019
 Mo Tu We Th Fr Sa Su
- 1  2  3  4  5  6  7
- 8  9 10 11 12 13 14
-15 16 17 18 19 20 21
-22 23 24 25 26 27 28
-29 30
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30 31
 ```
 
-```python
->>> from math import *
->>> cos(pi)
--1.0
+```python linenums="1"
+from math import *
+cos(pi) # output -1.0
 ```
 
 ### Módulos de la librería estándar más importantes

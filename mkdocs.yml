@@ -2,8 +2,66 @@ site_name: Profe Jorge
 site_url: https://jorgelgpz.github.io/cursos/
 
 nav:
-    - Home: 'index.md'
-    - Python: 'python/index.md'
+    - Inicio: 'index.md'
+    - Python:
+      - 'python/index.md'
+      - Introducción a Python: 'python/introduccion-python.md'
+      - Tipos de Datos Primitivos Simples: 'python/tipos-datos-simples.md'
+      - Entrada y Salida por Terminal: 'python/entrada-salida.md'
+      - Condicionales: 'python/condicionales.md'
+      - Bucles: 'python/bucles.md'
+      - Listas: 'python/listas.md'
+      - Tuplas: 'python/tuplas.md'
+      - Diccionarios: 'python/diccionarios.md'
+      - Funciones: 'python/funciones.md'
+      - Programación funcional: 'python/programacion-funcional.md'
+      - Comprensión de Colecciones: 'python/comprension-colecciones.md'
+      - Ficheros: 'python/ficheros.md'
+      - Excepciones: 'python/excepciones.md'
+      - Programación Orientada a Objetos: 'python/objetos.md'
+      - Módulos: 'python/modulos.md'
+      - La librería Datetime: 'python/datetime.md'
+      - La librería Numpy: 'python/numpy.md'
+      - La librería Pandas: 'python/pandas.md'
+      - La librería Matplotlib: 'python/matplotlib.md'
+      - Depuración de código: 'python/depuracion.md'
+      - Referencias: 'python/referencias.md'
 
 theme:
   name: material
+  favicon: images/favicon.png
+  logo: assets/logo.jpg
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - content.code.annotate
+  palette:
+
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+      accent: purple
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  # configuration for code
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.critic
+
+extra:
+  # Remove the footer display
+  generator: false
+

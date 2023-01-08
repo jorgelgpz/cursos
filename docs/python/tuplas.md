@@ -21,10 +21,9 @@ Se caracterizan por:
 
 Se usan habitualmente para representar colecciones de datos una determinada estructura semántica, como por ejemplo un vector o una matriz.
 
-```python
+```python linenums="1"
 # Tupla vacía
-type(())
-<class 'tuple'>
+type(()) # output <class 'tuple'>
 # Tupla con elementos de distintos tipos
 (1, "dos", True)
 # Vector
@@ -33,23 +32,19 @@ type(())
 ((1, 2, 3), (4, 5, 6))
 ```
 
-### Creación de tuplas mediante la función `tuple()`
+### Creación de tuplas mediante la función `Tuple`
 
-Otra forma de crear tuplas es mediante la función `tuple()`.
+Otra forma de crear tuplas es mediante la función `tuple = ()`.
 
-- `tuple(c)` : Crea una tupla con los elementos de la secuencia o colección `c`.
+- `tuple = (c)` : Crea una tupla con los elementos de la secuencia o colección `c`.
 
 Se pueden indicar los elementos separados por comas, mediante una cadena, o mediante una colección de elementos iterable.
 
-```python
->>> tuple()
-()
->>> tuple(1, 2, 3)
-(1, 2, 3)
->>> tuple("Python")
-('P', 'y', 't', 'h', 'o', 'n')
->>> tuple([1, 2, 3])
-(1, 2, 3)
+```python linenums="1"
+tuple = () # output ()
+tuple = (1, 2, 3) # output (1, 2, 3)
+tuple = ("Python") # output ('P', 'y', 't', 'h', 'o', 'n')
+tuple = ([1, 2, 3]) # output (1, 2, 3)
 ```
 
 ### Operaciones con tuplas
@@ -59,19 +54,13 @@ También se pueden obtener subtuplas de la misma manera que las sublistas.
 
 Las operaciones de listas que no modifican la lista también son aplicables a las tuplas.
 
-```python
->>> a = (1, 2, 3)
->>> a[1]
-2
->>> len(a)
-3
->>> a.index(3)
-2
->>> 0 in a
-False
->>> b = ((1, 2, 3), (4, 5, 6))
->>> b[1]
-(4, 5, 6)
->>> b[1][2]
-6
+```python linenums="1"
+a = (1, 2, 3)
+a[1] # output 2
+len(a) # output 3
+a.index(3) # output 2
+0 in a # output False
+b = ((1, 2, 3), (4, 5, 6))
+b[1] # output (4, 5, 6)
+b[1][2] # output 6
 ```

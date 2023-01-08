@@ -11,7 +11,7 @@ aliases:
 
 [Pandas](https://pandas.pydata.org) es una librería de Python especializada en el manejo y análisis de estructuras de datos.
 
-![Logo librería Pandas](../img/pandas-logo.png)
+![Logo librería Pandas](../assets/pandas-logo.png)
 
 Las principales características de esta librería son:
 
@@ -40,7 +40,7 @@ Dispone de un índice que asocia un nombre a cada elemento del la serie, a trav�
 
 Ejemplo. La siguiente serie contiene las asignaturas de un curso.
 
-![Ejemplo de serie](../img/pandas-series.png)
+![Ejemplo de serie](../assets/pandas-series.png)
 
 ## Creación de series
 
@@ -48,10 +48,13 @@ Ejemplo. La siguiente serie contiene las asignaturas de un curso.
 
 - `Series(data=lista, index=indices, dtype=tipo)` : Devuelve un objeto de tipo Series con los datos de la lista `lista`, las filas especificados en la lista `indices` y el tipo de datos indicado en `tipo`. Si no se pasa la lista de índices se utilizan como índices los enteros del 0 al $n-1$, done $n$ es el tamaño de la serie. Si no se pasa el tipo de dato se infiere.
 
-```python
->>> import pandas as pd
->>> s = pd.Series(['Matemáticas', 'Historia', 'Economía', 'Programación', 'Inglés'], dtype='string')
->>> print(s)
+```python linenums="1"
+import pandas as pd
+s = pd.Series(['Matemáticas', 'Historia', 'Economía', 'Programación', 'Inglés'], dtype='string')
+print(s)
+```
+`output`
+```python 
 0     Matemáticas
 1        Historia
 2        Economía
@@ -64,10 +67,13 @@ dtype: string
 
 - `Series(data=diccionario, index=indices)`: Devuelve un objeto de tipo Series con los valores del diccionario `diccionario` y las filas especificados en la lista `indices`. Si no se pasa la lista de índices se utilizan como índices las claves del diccionario.
 
-```python
->>> import pandas as pd
->>> s = pd.Series({'Matemáticas': 6.0,  'Economía': 4.5, 'Programación': 8.5})
->>> print(s)
+```python linenums="1"
+import pandas as pd
+s = pd.Series({'Matemáticas': 6.0,  'Economía': 4.5, 'Programación': 8.5})
+print(s)
+```
+`output`
+```python 
 Matemáticas     6.0
 Economía        4.5
 Programación    8.5
@@ -84,15 +90,12 @@ Existen varias propiedades o métodos para ver las características de una serie
   
 - `s.dtype` : Devuelve el tipo de datos de los elementos de la serie `s`.
 
-```python
->>> import pandas as pd
->>> s = pd.Series([1, 2, 2, 3, 3, 3, 4, 4, 4, 4])
->>> s.size
-10
->>> s.index
-RangeIndex(start=0, stop=10, step=1)
->>> s.dtype
-dtype('int64')
+```python linenums="1"
+import pandas as pd
+s = pd.Series([1, 2, 2, 3, 3, 3, 4, 4, 4, 4])
+s.size # output 10
+s.index # output RangeIndex(start=0, stop=10, step=1)
+s.dtype # output dtype('int64')
 ```
 
 ## Acceso a los elementos de una serie
@@ -111,14 +114,22 @@ Se realiza de forma similar a como se accede a los elementos de un array.
 - `s[nombre]` : Devuelve el elemento con el nombre `nombre` en el índice.
 - `s[nombres]` : Devuelve otra serie con los elementos correspondientes a los nombres indicadas en la lista `nombres` en el índice.
 
-```python
->>> s[1:3]
+```python linenums="1"
+s[1:3]
+```
+`output`
+```python linenums="1"
 Economía        4.5
 Programación    8.5
 dtype: float64
->>> s['Economía']
-4.5
->>> s[['Programación', 'Matemáticas']]
+```
+`output`
+```python linenums="1"
+s['Economía'] # output 4.5
+s[['Programación', 'Matemáticas']]
+```
+`output`
+```python 
 Programación    8.5
 Matemáticas     6.0
 dtype: float64
@@ -139,14 +150,15 @@ Las siguientes funciones permiten resumir varios aspectos de una serie:
 - `s.std()` : Devuelve la desviación típica de los datos de la serie `s` cuando los datos son de un tipo numérico.
 - `s.describe()`: Devuelve una serie con un resumen descriptivo que incluye el número de datos, su suma, el mínimo, el máximo, la media, la desviación típica y los cuartiles.
 
-```python
->>> import pandas as pd
->>> s = pd.Series([1, 1, 1, 1, 2, 2, 2, 3, 3, 4])
->>> s.count()  # Tamaño muestral
-10
->>> s.sum()  # Suma
-20
->>> s.cumsum()  # Suma acumulada
+```python linenums="1"
+import pandas as pd
+s = pd.Series([1, 1, 1, 1, 2, 2, 2, 3, 3, 4])
+s.count()  # Tamaño muestral # output 10
+s.sum()  # Suma # output 20
+s.cumsum()  # Suma acumulada
+```
+`output`
+```python 
 0     1
 1     2
 2     3
@@ -158,29 +170,42 @@ Las siguientes funciones permiten resumir varios aspectos de una serie:
 8    16
 9    20
 dtype: int64
->>> s.value_counts()  # Frecuencias absolutas
+```
+`output`
+```python linenums="1"
+s.value_counts()  # Frecuencias absolutas
+```
+`output`
+```python 
 1    4
 2    3
 3    2
 4    1
 dtype: int64
->>> s.value_counts(normalize=True)  # Frecuencias relativas
+```
+`output`
+```python linenums="1"
+s.value_counts(normalize=True)  # Frecuencias relativas
+```
+`output`
+```python 
 1    0.4
 2    0.3
 3    0.2
 4    0.1
 dtype: float64
->>> s.min()  # Mínimo
-1
->>> s.max()  # Máximo
-4
->>> s.mean()  # Media
-2.0
->>> s.var()  # Varianza
-1.1111111111111112
->>> s.std()  # Desviación típica
-1.0540925533894598
->>> s.describe()  # Resume descriptivo
+```
+`output`
+```python linenums="1"
+s.min()  # Mínimo # output 1
+s.max()  # Máximo # output 4
+s.mean()  # Media # output 2.0
+s.var()  # Varianza # output 1.1111111111111112
+s.std()  # Desviación típica # output 1.0540925533894598
+s.describe()  # Resume descriptivo
+```
+`output`
+```python 
 count    10.000000
 mean      2.000000
 std       1.054093
@@ -196,23 +221,35 @@ dtype: float64
 
 Los operadores binarios (`+`, `*`, `/`, etc.) pueden utilizarse con una serie, y devuelven otra serie con el resultado de aplicar la operación a cada elemento de la serie.
 
-```python
->>> import pandas as pd
+```python linenums="1"
+import pandas as pd
 s = pd.Series([1, 2, 3, 4])
->>> s * 2
+s * 2
+```
+`output`
+```python 
 0    2
 1    4
 2    6
 3    8
 dtype: int64
->>> s % 2
+```
+```python linenums="1"
+s % 2
+```
+`output`
+```python 
 0    1
 1    0
 2    1
 3    0
 dtype: int64
->>> s = pd.Series(['a', 'b', 'c'])
->>> s * 5
+```
+```python linenums="1"
+s = pd.Series(['a', 'b', 'c'])
+s * 5
+```
+```python 
 0    aaaaa
 1    bbbbb
 2    ccccc
@@ -225,18 +262,26 @@ También es posible aplicar una función a cada elemento de la serie mediante el
 
 - `s.apply(f)` : Devuelve una serie con el resultado de aplicar la función `f` a cada uno de los elementos de la serie `s`.
 
-```python
->>> import pandas as pd
->>> from math import log
->>> s = pd.Series([1, 2, 3, 4])
->>> s.apply(log)
+```python linenums="1"
+import pandas as pd
+from math import log
+s = pd.Series([1, 2, 3, 4])
+s.apply(log)
+```
+`output`
+```python 
 0    0.000000
 1    0.693147
 2    1.098612
 3    1.386294
 dtype: float64
->>> s = pd.Series(['a', 'b', 'c'])
->>> s.apply(str.upper)
+```
+```python linenums="1"
+s = pd.Series(['a', 'b', 'c'])
+s.apply(str.upper)
+```
+`output`
+```python 
 0    A
 1    B
 2    C
@@ -249,10 +294,13 @@ Para filtrar una serie y quedarse con los valores que cumplen una determinada co
 
 - `s[condicion]` : Devuelve una serie con los elementos de la serie `s` que se corresponden con el valor `True` de la lista booleana `condicion`. `condicion` debe ser una lista de valores booleanos de la misma longitud que la serie.
 
-```python
->>> import pandas as pd
->>> s = pd.Series({'Matemáticas': 6.0,  'Economía': 4.5, 'Programación': 8.5})
->>> print(s[s > 5])
+```python linenums="1"
+import pandas as pd
+s = pd.Series({'Matemáticas': 6.0,  'Economía': 4.5, 'Programación': 8.5})
+print(s[s > 5])
+```
+`output`
+```python 
 Matemáticas     6.0
 Programación    8.5
 dtype: float64
@@ -266,15 +314,23 @@ Para ordenar una serie se utilizan los siguientes métodos:
 
 - `df.sort_index(ascending=booleano`) : Devuelve la serie que resulta de ordenar el índice de la serie `s`. Si el argumento del parámetro `ascending` es `True` el orden es creciente y si es `False` decreciente.
 
-```python
->>> import pandas as pd
->>> s = pd.Series({'Matemáticas': 6.0,  'Economía': 4.5, 'Programación': 8.5})
->>> print(s.sort_values())
+```python linenums="1"
+import pandas as pd
+s = pd.Series({'Matemáticas': 6.0,  'Economía': 4.5, 'Programación': 8.5})
+print(s.sort_values())
+```
+`output`
+```python 
 Economía        4.5
 Matemáticas     6.0
 Programación    8.5
 dtype: float64
->>> print(s.sort_index(ascending = False))
+```
+```python linenums="1"
+print(s.sort_index(ascending = False))
+```
+`output`
+```python 
 Programación    8.5
 Matemáticas     6.0
 Economía        4.5
@@ -287,11 +343,14 @@ Los datos desconocidos representan en Pandas por `NaN` y los nulos por `None`. T
 
 - `s.dropna()` : Elimina los datos desconocidos o nulos de la serie `s`.
 
-```python
->>> import pandas as pd
->>> import numpy as np
->>> s = pd.Series(['a', 'b', None, 'c', np.NaN,  'd'])
->>> s
+```python linenums="1"
+import pandas as pd
+import numpy as np
+s = pd.Series(['a', 'b', None, 'c', np.NaN,  'd'])
+s
+```
+`output`
+```python 
 0       a
 1       b
 2    None
@@ -299,7 +358,12 @@ Los datos desconocidos representan en Pandas por `NaN` y los nulos por `None`. T
 4     NaN
 5       d
 dtype: object
->>> s.dropna()
+```
+```python linenums="1"
+s.dropna()
+```
+`output`
+```python 
 0    a
 1    b
 3    c
@@ -315,7 +379,7 @@ Un DataFrame contiene dos índices, uno para las filas y otro para las columnas,
 
 **Ejemplo**. El siguiente DataFrame contiene información sobre los alumnos de un curso. Cada fila corresponde a un alumno y cada columna a una variable.
 
-![Ejemplo de DataFrame](../img/pandas-dataframe.png)
+![Ejemplo de DataFrame](../assets/pandas-dataframe.png)
 
 ## Creación de un DataFrame
 
@@ -327,15 +391,20 @@ Para crear un DataFrame a partir de un diccionario cuyas claves son los nombres 
 
 <i class='fa fa-exclamation-triangle' style="color:red"></i> Los valores asociados a las claves del diccionario deben ser listas del mismo tamaño.
 
-```python
->>> import pandas as pd
->>> datos = {'nombre':['María', 'Luis', 'Carmen', 'Antonio'],
-... 'edad':[18, 22, 20, 21],
-... 'grado':['Economía', 'Medicina', 'Arquitectura', 'Economía'],
-... 'correo':['maria@gmail.com', 'luis@yahoo.es', 'carmen@gmail.com', 'antonio@gmail.com']
-... }
->>> df = pd.DataFrame(datos)
->>> print(df)
+```python linenums="1"
+import pandas as pd
+datos = {'nombre':['María', 'Luis', 'Carmen', 'Antonio'],
+'edad':[18, 22, 20, 21],
+'grado':['Economía', 'Medicina', 'Arquitectura', 'Economía'],
+'correo':['maria@gmail.com', 'luis@yahoo.es', 'carmen@gmail.com', 'antonio@gmail.com']
+}
+```
+```python linenums="1"
+df = pd.DataFrame(datos)
+print(df)
+```
+`output`
+```python 
     nombre  edad         grado             correo
 0    María    18      Economía    maria@gmail.com
 1     Luis    22      Medicina      luis@yahoo.es
@@ -351,10 +420,13 @@ Para crear un DataFrame a partir de una lista de listas con los datos de las col
 
 <i class='fa fa-exclamation-triangle' style="color:red"></i> Si las listas anidadas en `listas` no tienen el mismo tamaño, las listas menores se rellenan con valores `NaN`.
 
-```python
->>> import pandas as pd
->>> df = pd.DataFrame([['María', 18], ['Luis', 22], ['Carmen', 20]], columns=['Nombre', 'Edad'])
->>> print(df)
+```python linenums="1"
+import pandas as pd
+df = pd.DataFrame([['María', 18], ['Luis', 22], ['Carmen', 20]], columns=['Nombre', 'Edad'])
+print(df)
+```
+`output`
+```python 
    Nombre   Edad
 0   María     18
 1    Luis     22
@@ -369,10 +441,13 @@ Para crear un DataFrame a partir de una lista de diccionarios con los datos de l
 
 <i class='fa fa-exclamation-triangle' style="color:red"></i> Si los diccionarios no tienen las mismas claves, las claves que no aparecen en el diccionario se rellenan con valores `NaN`.
 
-```python
->>> import pandas as pd
->>> df = pd.DataFrame([{'Nombre':'María', 'Edad':18}, {'Nombre':'Luis', 'Edad':22}, {'Nombre':'Carmen'}])
->>> print(df)
+```python linenums="1"
+import pandas as pd
+df = pd.DataFrame([{'Nombre':'María', 'Edad':18}, {'Nombre':'Luis', 'Edad':22}, {'Nombre':'Carmen'}])
+print(df)
+```
+`output`
+```python 
 0   María  18.0
 1    Luis  22.0
 2  Carmen   NaN
@@ -384,10 +459,13 @@ Para crear un DataFrame a partir de un array de NumPy se utiliza el siguiente m�
 
 - `DataFrame(data=array, index=filas, columns=columnas, dtype=tipo)` : Devuelde un objeto del tipo DataFrame cuyas filas y columnas son las del array `array`, los nombres de filas indicados en la lista `filas`, los nombres de columnas indicados en la lista `columnas` y el tipo indicado en `tipo`. La lista `filas` tiene que tener el mismo tamaño que el número de filas del array y la lista `columnas` el mismo tamaño que el número de columnas del array. Si no se pasa la lista de filas se utilizan enteros empezando en 0. Si no se pasa la lista de columnas se utilizan las claves de los diccionarios. Si no se pasa la lista de tipos, se infiere.
 
-```python
->>> import pandas as pd
->>> df = pd.DataFrame(np.random.randn(4, 3), columns=['a', 'b', 'c'])
->>> print(df)
+```python linenums="1"
+import pandas as pd
+df = pd.DataFrame(np.random.randn(4, 3), columns=['a', 'b', 'c'])
+print(df)
+```
+`output`
+```python 
           a         b         c
 0 -1.408238  0.644706  1.077434
 1 -0.279264 -0.249229  1.019137
@@ -403,12 +481,15 @@ Dependiendo del tipo de fichero, existen distintas funciones para importar un Da
 
 - `read_excel(fichero.xlsx, sheet_name=hoja, header=n, index_col=m, na_values=no-validos, decimal=separador-decimal)` : Devuelve un objeto del tipo DataFrame con los datos de la hoja de cálculo `hoja` del fichero Excel `fichero.xlsx`. Como nombres de columnas se utiliza los valores de la fila `n` y como nombres de filas los valores de la columna `m`. Si no se indica `m` se utilizan como nombres de filas los enteros empezando en 0. Los valores incluídos en la lista `no-validos` se convierten en `NaN`. Para los datos numéricos se utiliza como separador de decimales el carácter indicado en `separador-decimal`.
 
-```python
->>> import pandas as pd
->>> # Importación del fichero datos-colesteroles.csv
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesteroles.csv', sep=';', decimal=',')
->>> print(df.head())
+```python linenums="1"
+import pandas as pd
+# Importación del fichero datos-colesteroles.csv
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesteroles.csv', sep=';', decimal=',')
+print(df.head())
+```
+`output`
+```python 
                               nombre  edad sexo    peso    altura  colesterol
 0       José Luis Martínez Izquierdo    18    H    85.0    1.79         182.0
 1                     Rosa Díaz Díaz    32    M    65.0    1.73         232.0
@@ -445,11 +526,14 @@ Existen varias propiedades o métodos para ver las características de un DataFr
 
 - `df.tail(n)` : Devuelve las `n` últimas filas del DataFrame `df`.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> df.info()
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+df.info()
+```
+`output`
+```python linenums="1"
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 14 entries, 0 to 13
 Data columns (total 6 columns):
@@ -463,15 +547,17 @@ Data columns (total 6 columns):
  5   colesterol  13 non-null     float64
 dtypes: float64(3), int64(1), object(2)
 memory usage: 800.0+ bytes
->>> df.shape
-(14, 6)
->>> df.size
-84
->>> df.columns
-Index(['nombre', 'edad', 'sexo', 'peso', 'altura', 'colesterol'], dtype='object')
->>> df.index
-RangeIndex(start=0, stop=14, step=1)
->>> df.dtypes
+```
+`output`
+```python linenums="1"
+df.shape # output (14, 6)
+df.size # output 84
+df.columns # output Index(['nombre', 'edad', 'sexo', 'peso', 'altura', 'colesterol'], dtype='object')
+df.index # output RangeIndex(start=0, stop=14, step=1)
+df.dtypes
+```
+`output`
+```python 
 nombre         object
 edad            int64
 sexo           object
@@ -487,11 +573,14 @@ Para cambiar el nombre de las filas y las columnas de un DataFrame se utiliza el
 
 - `df.rename(columns=columnas, index=filas)`: Devuelve el DataFrame que resulta de renombrar las columnas indicadas en las claves del diccionario `columnas` con sus valores y las filas indicadas en las claves del diccionario `filas` con sus valores en el DataFrame `df`.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df.rename(columns={'nombre':'nombre y apellidos', 'altura':'estatura'}, index={0:1000, 1:1001, 2:1002}))
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+print(df.rename(columns={'nombre':'nombre y apellidos', 'altura':'estatura'}, index={0:1000, 1:1001, 2:1002}))
+```
+`output`
+```python 
                     nombre y apellidos  edad sexo    peso  estatura    colesterol
 1000      José Luis Martínez Izquierdo    18    H    85.0      1.79         182.0
 1001                    Rosa Díaz Díaz    32    M    65.0      1.73         232.0
@@ -507,11 +596,14 @@ Aunque el índice de un DataFrame suele fijarse en la creación del mismo, en oc
 
 - `df.set_index(keys = columnas, verify_integrity = bool)`: Devuelve el DataFrame que resulta de eliminar las columnas de la lista `columnas` y convertirlas en el nuevo índice. El parámetro `verify_integrity` recibe un booleano (`False` por defecto) y realiza una comprobación para evitar duplicados en la clave cuando recibe `True`.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df.set_index("nombre").head())
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+print(df.set_index("nombre").head())
+```
+`output`
+```python 
                               edad sexo  peso  altura  colesterol
 nombre                                                           
 José Luis Martínez Izquierdo    18    H  85.0    1.79       182.0
@@ -528,11 +620,14 @@ Para reordenar los índices de las filas y las columnas de un DataFrame, así co
 
 - `df.reindex(index=filas, columns=columnas, fill_value=relleno)` : Devuelve el DataFrame que resulta de tomar del DataFrame `df` las filas con nombres en la lista `filas` y las columnas con nombres en la lista `columnas`. Si alguno de los nombres indicados en `filas` o `columnas` no existía en el DataFrame `df`, se crean filan o columnas nuevas rellenas con el valor `relleno`.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df.reindex(index=[4, 3, 1], columns=['nombre', 'tensión', 'colesterol']))
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+print(df.reindex(index=[4, 3, 1], columns=['nombre', 'tensión', 'colesterol']))
+```
+`output`
+```python 
                   nombre  tensión  colesterol
 4   Marisa López Collado      NaN       148.0
 3    Carmen López Pinzón      NaN       200.0
@@ -551,13 +646,15 @@ El acceso a los datos de un DataFrame se puede hacer a través de posiciones o t
 
 - `df.iloc[i]` : Devuelve una serie con los elementos de la fila `i` del DataFrame `df`.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df.iloc[1, 3])
-65
->>> print(df.iloc[1, :2])
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+print(df.iloc[1, 3]) # output 65
+print(df.iloc[1, :2])
+```
+`output`
+```python 
 nombre     Rosa Díaz Díaz
 edad                   32
 ```
@@ -572,18 +669,25 @@ edad                   32
 
 - `df.columna` : Devuelve una serie con los elementos de la columna de nombre `columna` del DataFrame `df`. Es similar al método anterior pero solo funciona cuando el nombre de la columna no tiene espacios en blanco.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df.loc[2, 'colesterol'])
-191
->>> print(df.loc[:3, ('colesterol','peso')])
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+print(df.loc[2, 'colesterol']) # output 191
+print(df.loc[:3, ('colesterol','peso')])
+```
+`output`
+```python 
      colesterol    peso
 1         232.0    65.0
 2         191.0     NaN
 3         200.0    65.0
->>> print(df['colesterol'])
+```
+```python linenums="1"
+print(df['colesterol'])
+```
+`output`
+```python 
 0     182.0
 1     232.0
 2     191.0
@@ -601,12 +705,15 @@ El procedimiento para añadir una nueva columna a un DataFrame es similar al de 
 
 - `d[nombre] = serie`: Añade al DataFrame `df` una nueva columna con el nombre `nombre` y los valores de la serie `serie`. Si el tamaño de la serie es menor que el número de filas de `df` se rellena con valores `NaN` mientras que si es mayor se recorta.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> df['diabetes'] = pd.Series([False, False, True, False, True])
->>> print(df)
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+df['diabetes'] = pd.Series([False, False, True, False, True])
+print(df)
+```
+`output`
+```python 
                               nombre  edad sexo    peso  altura    colesterol diabetes
 0       José Luis Martínez Izquierdo    18    H    85.0    1.79         182.0    False
 1                     Rosa Díaz Díaz    32    M    65.0    1.73         232.0    False
@@ -621,17 +728,24 @@ El procedimiento para añadir una nueva columna a un DataFrame es similar al de 
 
 Puesto que los datos de una misma columna de un DataFrame son del mismo tipo, es fácil aplicar la misma operación a todos los elementos de la columna.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df['altura']*100)
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+print(df['altura']*100)
+```
+`output`
+```python 
 0     179
 1     173
 2     181
 ...
-
->>> print(df['sexo']=='M')
+```
+```python linenums="1"
+print(df['sexo']=='M')
+```
+`output`
+```python 
 0     False
 1      True
 2     False
@@ -645,12 +759,15 @@ Para aplicar funciones a todos los elementos de una columna se utiliza el siguie
 
 - `df[columna].apply(f)` : Devuelve una serie con los valores que resulta de aplicar la función `f` a los elementos de la columna con nombre `columna` del DataFrame `df`.
 
-```python
->>> import pandas as pd
->>> from math import log
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df['altura'].apply(log))
+```python linenums="1"
+import pandas as pd
+from math import log
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+print(df['altura'].apply(log))
+```
+`output`
+```python 
 0     0.582216
 1     0.548121
 2     0.593327
@@ -661,12 +778,15 @@ Para aplicar funciones a todos los elementos de una columna se utiliza el siguie
 
 A menudo una columna contiene cadenas que representan fechas. Para convertir estas cadenas al tipo `datetime` se utiliza el siguiente método:
 
-- `to_datetime(columna, formato)`: Devuelve la serie que resulta de convertir las cadenas de la columna con el nombre `columna` en fechas del tipo `datetime` con el formado especificado en `formato`. ([Ver librería datetime](../datetime/))
+- `to_datetime(columna, formato)`: Devuelve la serie que resulta de convertir las cadenas de la columna con el nombre `columna` en fechas del tipo `datetime` con el formado especificado en `formato`. ([Ver librería datetime](datetime.md))
 
-```python
->>> import pandas as pd
->>> df = pd.DataFrame({'Name': ['María', 'Carlos', 'Carmen'], 'Nacimiento':['05-03-2000', '20-05-2001', '10-12-1999']})
->>> print(pd.to_datetime(df.Nacimiento, format = '%d-%m-%Y'))
+```python linenums="1"
+import pandas as pd
+df = pd.DataFrame({'Name': ['María', 'Carlos', 'Carmen'], 'Nacimiento':['05-03-2000', '20-05-2001', '10-12-1999']})
+print(pd.to_datetime(df.Nacimiento, format = '%d-%m-%Y'))
+```
+`output`
+```python 
 0   2000-03-05
 1   2001-05-20
 2   1999-12-10
@@ -689,31 +809,43 @@ Al igual que para las series, los siguientes métodos permiten resumir la inform
 - `df.corr()` : Devuelve un DataFrame con los coeficientes de correlación de Pearson de los datos de las columnas numéricas del DataFrame `df`.
 - `df.describe(include = tipo)` : Devuelve un DataFrame con un resumen estadístico de las columnas del DataFrame `df` del tipo `tipo`. Para los datos numéricos (`number`) se calcula la media, la desviación típica, el mínimo, el máximo y los cuartiles. Para los datos no numéricos (`object`) se calcula el número de valores, el número de valores distintos, la moda y su frecuencia. Si no se indica el tipo solo se consideran las columnas numéricas.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>>df.edad.count()  # Tamaño muestral
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+df.edad.count()  # Tamaño muestral
 14
->>> print(df.edad.mean())  # Media
-38.214285714285715
->>> print(df.edad.var())  # Varianza
-244.02747252747255
->>> print(df.edad.std())  # Desviación típica
-15.62137870123737
->>> df.cov()  # Matriz de covarianzas
+print(df.edad.mean())  # Media # output 38.214285714285715
+print(df.edad.var())  # Varianza # output 244.02747252747255
+print(df.edad.std())  # Desviación típica # output 15.62137870123737
+```
+```python linenums="1"
+df.cov()  # Matriz de covarianzas
+```
+`output`
+```python 
                   edad        peso    altura   colesterol
 edad        244.027473  -69.891026 -0.326593   279.717949
 peso        -69.891026  260.076923  1.764615    -2.424242
 altura       -0.326593    1.764615  0.013229     0.563269
 colesterol  279.717949   -2.424242  0.563269  1587.858974
->>> df.corr()  # Matriz de correlación
+```
+```python linenums="1"
+df.corr()  # Matriz de correlación
+```
+`output`
+```python 
                 edad      peso    altura  colesterol
 edad        1.000000 -0.276185 -0.181774    0.452391
 peso       -0.276185  1.000000  0.918984   -0.003621
 altura     -0.181774  0.918984  1.000000    0.122694
 colesterol  0.452391 -0.003621  0.122694    1.000000
->>> print(df.describe())  # Resumen descriptivo
+```
+```python linenums="1"
+print(df.describe())  # Resumen descriptivo
+```
+`output`
+```python 
             edad        peso     altura  colesterol
 count  14.000000   13.000000  14.000000   13.000000
 mean   38.214286   70.923077   1.768571  220.230769
@@ -723,7 +855,12 @@ min    18.000000   51.000000   1.580000  148.000000
 50%    35.000000   65.000000   1.755000  210.000000
 75%    49.750000   78.000000   1.840000  249.000000
 max    68.000000  109.000000   1.980000  280.000000
->>> print(df.describe(include='object'))
+```
+```python linenums="1"
+print(df.describe(include='object'))
+```
+`output`
+```python 
                           nombre sexo
 count                         14   14
 unique                        14    2
@@ -739,19 +876,27 @@ Para eliminar columnas de un DataFrame se utilizan los siguientes métodos:
   
 - `df.pop(nombre)` : Elimina la columna con nombre `nombre` del DataFrame `df` y la devuelve como una serie.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> edad = df.pop('edad')
->>> print(df)
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+edad = df.pop('edad')
+print(df)
+```
+`output`
+```python 
                               nombre    sexo  peso  altura    colesterol
 0       José Luis Martínez Izquierdo     H    85.0    1.79         182.0
 1                     Rosa Díaz Díaz     M    65.0    1.73         232.0
 2              Javier García Sánchez     H     
 NaN    1.81         191.0
 ...
+```
+```python linenums="1"
 print(edad)
+```
+`output`
+```python 
 0     18
 1     32
 2     24
@@ -766,12 +911,15 @@ Para añadir una fila a un DataFrame se utiliza el siguiente método:
 
 - `df.append(serie, ignore_index=True)` : Devuelve el DataFrame que resulta de añadir una fila al DataFrame `df` con los valores de la serie `serie`. Los nombres del índice de la serie deben corresponderse con los nombres de las columnas de `df`. Si no se pasa el parámetro `ignore_index` entonces debe pasarse el parámetro `name` a la serie, donde su argumento será el nombre de la nueva fila.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> df = df.append(pd.Series(['Carlos Rivas', 28, 'H', 89.0, 1.78, 245.0], index=['nombre','edad','sexo','peso','altura','colesterol']), ignore_index=True)
->>> print(df.tail())
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+df = df.append(pd.Series(['Carlos Rivas', 28, 'H', 89.0, 1.78, 245.0], index=['nombre','edad','sexo','peso','altura','colesterol']), ignore_index=True)
+print(df.tail())
+```
+`output`
+```python 
                               nombre  edad sexo    peso  altura    colesterol
 10             Macarena Álvarez Luna    53    M    55.0    1.62         262.0
 11        José María de la Guía Sanz    58    H    78.0    1.87         198.0
@@ -786,11 +934,14 @@ Para eliminar filas de un DataFrame se utilizan el siguiente método:
 
 - `df.drop(filas)` : Devuelve el DataFrame que resulta de eliminar las filas con los nombres indicados en la lista `filas` del DataFrame `df`.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df.drop([1, 3]))
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+print(df.drop([1, 3]))
+```
+`output`
+```python 
                               nombre  edad sexo   peso  altura  colesterol
 0       José Luis Martínez Izquierdo    18    H   85.0    1.79       182.0
 2              Javier García Sánchez    24    H    NaN    1.81       191.0
@@ -804,11 +955,14 @@ Una operación bastante común con un DataFrame es obtener las filas que cumplen
 
 - `df[condicion]` : Devuelve un DataFrame con las filas del DataFrame `df` que se corresponden con el valor `True` de la lista booleana `condicion`. `condicion` debe ser una lista de valores booleanos de la misma longitud que el número de filas del DataFrame.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df[(df['sexo']=='H') & (df['colesterol'] > 260)])
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+print(df[(df['sexo']=='H') & (df['colesterol'] > 260)])
+```
+`output`
+```python 
                      nombre  edad sexo    peso  altura    colesterol
 6   Antonio Fernández Ocaña    51    H    62.0    1.72         276.0
 9   Santiago Reillo Manzano    46    H    75.0    1.85         280.0
@@ -822,11 +976,14 @@ Para ordenar un DataFrame de acuerdo a los valores de una determinada columna se
 
 - `df.sort_index(ascending=booleano`) : Devuelve el DataFrame que resulta de ordenar las filas del DataFrame `df` según los nombres de las filas. Si el argumento del parámetro `ascending` es `True` el orden es creciente y si es `False` decreciente.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df.sort_values('colesterol'))
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+print(df.sort_values('colesterol'))
+```
+`output`
+```python 
                               nombre  edad sexo   peso  altura  colesterol
 4               Marisa López Collado    46    M   51.0    1.58       148.0
 0       José Luis Martínez Izquierdo    18    H   85.0    1.79       182.0
@@ -841,11 +998,14 @@ Para eliminar las filas de un DataFrame que contienen datos desconocidos `NaN` o
 
 - `s.dropna(subset=columnas)` : Devuelve el DataFrame que resulta de eliminar las filas que contienen algún dato desconocido o nulo en las columnas de la lista `columna` del DataFrame `df`. Si no se pasa un argumento al parámetro `subset` se aplica a todas las columnas del DataFrame.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df.dropna())
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+print(df.dropna())
+```
+`output`
+```python 
                               nombre  edad sexo   peso  altura  colesterol
 0       José Luis Martínez Izquierdo    18    H   85.0    1.79       182.0
 1                     Rosa Díaz Díaz    32    M   65.0    1.73       232.0
@@ -858,7 +1018,7 @@ Para eliminar las filas de un DataFrame que contienen datos desconocidos `NaN` o
 
 En muchas aplicaciones es útil agrupar los datos de un DataFrame de acuerdo a los valores de una o varias columnas (categorías), como por ejemplo el sexo o el país.
 
-![División en grupos de un DataFrame](../img/pandas-grupos.png)
+![División en grupos de un DataFrame](../assets/pandas-grupos.png)
 
 ### Dividir un DataFrame en grupos
 
@@ -866,25 +1026,26 @@ Para dividir un DataFrame en grupos se utiliza el siguiente método:
 
 - `df.groupby(columnas).groups` : Devuelve un diccionario con cuyas claves son las tuplas que resultan de todas las combinaciones de los valores de las columnas con nombres en la lista `columnas`, y valores las listas de los nombres de las filas que contienen esos valores en las correspondientes columnas del DataFrame `df`.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df.groupby('sexo').groups)
-{'H': Int64Index([0, 2, 5, 6, 8, 9, 11, 12], dtype='int64'), 'M': Int64Index([1, 3, 4, 7, 10, 13], dtype='int64')}
->>> print(df.groupby(['sexo','edad']).groups)
-{('H', 18): Int64Index([0], dtype='int64'), ('H', 24): Int64Index([2], dtype='int64'), ('H', 27): Int64Index([12], dtype='int64'), ('H', 35): Int64Index([8], dtype='int64'), ('H', 46): Int64Index([9], dtype='int64'), ('H', 51): Int64Index([6], dtype='int64'), ('H', 58): Int64Index([11], dtype='int64'), ('H', 68): Int64Index([5], dtype='int64'), ('M', 20): Int64Index([13], dtype='int64'), ('M', 22): Int64Index([7], dtype='int64'), ('M', 32): Int64Index([1], dtype='int64'), ('M', 35): Int64Index([3], dtype='int64'), ('M', 46): Int64Index([4], dtype='int64'), ('M', 53): Int64Index([10], dtype='int64')}
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+print(df.groupby('sexo').groups) # output {'H': Int64Index([0, 2, 5, 6, 8, 9, 11, 12], dtype='int64'), 'M': Int64Index([1, 3, 4, 7, 10, 13], dtype='int64')}
+print(df.groupby(['sexo','edad']).groups) # output {('H', 18): Int64Index([0], dtype='int64'), ('H', 24): Int64Index([2], dtype='int64'), ('H', 27): Int64Index([12], dtype='int64'), ('H', 35): Int64Index([8], dtype='int64'), ('H', 46): Int64Index([9], dtype='int64'), ('H', 51): Int64Index([6], dtype='int64'), ('H', 58): Int64Index([11], dtype='int64'), ('H', 68): Int64Index([5], dtype='int64'), ('M', 20): Int64Index([13], dtype='int64'), ('M', 22): Int64Index([7], dtype='int64'), ('M', 32): Int64Index([1], dtype='int64'), ('M', 35): Int64Index([3], dtype='int64'), ('M', 46): Int64Index([4], dtype='int64'), ('M', 53): Int64Index([10], dtype='int64')}
 ```
 
 Para obtener un grupo concreto se utiliza el siguiente método:
 
 - `df.groupby(columnas).get_group(valores)` : Devuelve un DataFrame con las filas del DataFrame `df` que cumplen que las columnas de la lista `columnas` presentan los valores de la tupla `valores`. La lista `columnas` y la tupla `valores` deben tener el mismo tamaño.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df.groupby('sexo').get_group('M'))
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+print(df.groupby('sexo').get_group('M'))
+```
+`output`
+```python 
                     nombre  edad sexo    peso   altura    colesterol
 1           Rosa Díaz Díaz    32    M    65.0     1.73         232.0
 3      Carmen López Pinzón    35    M    65.0     1.70         200.0
@@ -909,11 +1070,16 @@ Una función de agregación toma como argumento una lista y devuelve una único 
 - `np.mean` : Devuelve la media de una lista de valores.
 - `np.std` : Devuelve la desviación típica de una lista de valores.
 
-```python
->>> import pandas as pd
->>> df = pd.read_csv(
-'https://raw.githubusercontent.com/asalber/manual-python/master/datos/colesterol.csv')
->>> print(df.groupby('sexo').agg(np.mean))
+```python linenums="1"
+import pandas as pd
+df = pd.read_csv(
+'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+
+import numpy as np
+print(df.groupby('sexo').agg(np.mean))
+```
+`output`
+```python 
            edad       peso    altura  colesterol
 sexo                                            
 H     40.875000  80.714286  1.837500     228.375
@@ -924,7 +1090,7 @@ M     34.666667  59.500000  1.676667     207.200
 
 A menudo la disposición de los datos en un DataFrame no es la adecuada para su tratamiento y es necesario reestructurar el DataFrame. Los datos que contiene un DataFrame pueden organizarse en dos formatos: ancho y largo.
 
-![Formatos de un DataFrame](../img/formatos-dataframe.png)
+![Formatos de un DataFrame](../assets/formatos-dataframe.png)
 
 ### Convertir un DataFrame a formato largo
 
@@ -932,16 +1098,19 @@ Para convertir un DataFrame de formato ancho a formato largo (columnas a filas) 
 
 - `df.melt(id_vars=id-columnas, value_vars=columnas, var_name=nombre-columnas, var_value=nombre-valores)` : Devuelve el DataFrame que resulta de convertir el DataFrame `df` de formato ancho a formato largo. Todas las columnas de lista `columnas` se reestructuran en dos nuevas columnas con nombres `nombre-columnas` y `nombre-valores` que contienen los nombres de las columnas originales y sus valores, respectivamente. Las columnas en la lista `id-columnas` se mantienen sin reestructurar. Si no se pasa la lista `columnas` entonces se reestructuran todas las columnas excepto las columnas de la lista `id-columnas`.
 
-```python
->>> import pandas as pd
->>> datos = {'nombre':['María', 'Luis', 'Carmen'],
-... 'edad':[18, 22, 20],
-... 'Matemáticas':[8.5, 7, 3.5],
-... 'Economía':[8, 6.5, 5],
-... 'Programación':[6.5, 4, 9]}
->>> df = pd.DataFrame(datos)
->>> df1 = df.melt(id_vars=['nombre', 'edad'], var_name='asignatura', value_name='nota')
->>> print(df1)
+```python linenums="1"
+import pandas as pd
+datos = {'nombre':['María', 'Luis', 'Carmen'],
+'edad':[18, 22, 20],
+'Matemáticas':[8.5, 7, 3.5],
+'Economía':[8, 6.5, 5],
+'Programación':[6.5, 4, 9]}
+df = pd.DataFrame(datos)
+df1 = df.melt(id_vars=['nombre', 'edad'], var_name='asignatura', value_name='nota')
+print(df1)
+```
+`output`
+```python 
    nombre  edad    asignatura  nota
 0   María    18   Matemáticas   8.5
 1    Luis    22   Matemáticas   7.0
@@ -960,9 +1129,12 @@ Para convertir un DataFrame de formato largo a formato ancho (filas a columnas) 
 
 - `df.pivot(index=filas, columns=columna, values=valores)` : Devuelve el DataFrame que resulta de convertir el DataFrame `df` de formato largo a formato ancho. Se crean tantas columnas nuevas como valores distintos haya en la columna `columna`. Los nombres de estas nuevas columnas son los valores de la columna `columna` mientras que sus valores se toman de la columna `valores`. Los nombres del índice del nuevo DataFrame se toman de los valores de la columna `filas`.
 
-```python
+```python linenums="1"
 # Continuación del código anterior
->>> print(df1.pivot(index='nombre', columns='asignatura', values='nota'))
+print(df1.pivot(index='nombre', columns='asignatura', values='nota'))
+```
+`output`
+```python 
 asignatura  Economía  Matemáticas  Programación
 nombre                                  
 Carmen           5.0          3.5           9.0
@@ -982,11 +1154,11 @@ Dos o más DataFrames pueden combinarse en otro DataFrame. La combinación puede
 
 - **Concatenación de filas**. Las filas de los DataFrames se concatenan unas a continuación de las otras para formar el nuevo DataFrame. Para ello es necesario que los DataFrames que se combinen tengan el mismo índice de columnas.
 
-    ![Concatenación de DataFrames por filas](../img/pandas-concatenacion-filas.png)
+    ![Concatenación de DataFrames por filas](../assets/pandas-concatenacion-filas.png)
 
 - **Concatenación de columnas**. Las columnas de los DataFrames se concatenan unas a continuación de las otras para formar el nuevo DataFrame. Para ello es necesario que los DataFrames que se combinen tengan el mismo índice de filas.
 
-    ![Concatenación de DataFrames por columnas](../img/pandas-concatenacion-columnas.png)
+    ![Concatenación de DataFrames por columnas](../assets/pandas-concatenacion-columnas.png)
 
 Para concatenar dos o más DataFrames se utiliza el siguiente método:
 
@@ -994,14 +1166,17 @@ Para concatenar dos o más DataFrames se utiliza el siguiente método:
 
 <i class='fa fa-exclamation-triangle' style='color:red'></i>Si los DataFrames que se concatenan por filas no tienen el mismo índice de columnas, el DataFrame resultante incluirá todas las columnas existentes en los DataFrames y rellenará con valores `NaN` los datos no disponibles. Si los DataFrames que se concatenan por columnas no tienen el mismo índice de filas, el DataFrame resultante incluirá todas las filas existentes en los DataFrames y rellenará con valores `NaN` los datos no disponibles.
 
-```python
->>> import pandas as pd
->>> df1 = pd.DataFrame({"Nombre":["Carmen", "Luis"], 
-... "Sexo":["Mujer", "Hombre"], "Edad":[22, 18]}).set_index("Nombre")
->>> df2 = pd.DataFrame({"Nombre":["María", "Pedro"], 
-... "Sexo":["Mujer", "Hombre"], "Edad":[25, 30]}).set_index("Nombre")
->>> df = pd.concat([df1, df2])
->>> df
+```python linenums="1"
+import pandas as pd
+df1 = pd.DataFrame({"Nombre":["Carmen", "Luis"], 
+"Sexo":["Mujer", "Hombre"], "Edad":[22, 18]}).set_index("Nombre")
+df2 = pd.DataFrame({"Nombre":["María", "Pedro"], 
+"Sexo":["Mujer", "Hombre"], "Edad":[25, 30]}).set_index("Nombre")
+df = pd.concat([df1, df2])
+df
+```
+`output`
+```python 
           Sexo  Edad
 Nombre              
 Carmen   Mujer    22
@@ -1010,14 +1185,17 @@ María    Mujer    25
 Pedro   Hombre    30
 ```
 
-```python
->>> import pandas as pd
->>> df1 = pd.DataFrame({"Nombre":["Carmen", "Luis", "María"], 
-... "Sexo":["Mujer", "Hombre", "Mujer"]}).set_index("Nombre")
->>> df2 = pd.DataFrame({"Nombre":["Carmen", "Luis", "María"], 
-... "Edad":[22, 18, 25]}).set_index("Nombre")
->>> df = pd.concat([df1, df2], axis = 1)
->>> df
+```python linenums="1"
+import pandas as pd
+df1 = pd.DataFrame({"Nombre":["Carmen", "Luis", "María"], 
+"Sexo":["Mujer", "Hombre", "Mujer"]}).set_index("Nombre")
+df2 = pd.DataFrame({"Nombre":["Carmen", "Luis", "María"], 
+"Edad":[22, 18, 25]}).set_index("Nombre")
+df = pd.concat([df1, df2], axis = 1)
+df
+```
+`output`
+```python 
           Sexo  Edad
 Nombre              
 Carmen   Mujer    22
@@ -1037,57 +1215,69 @@ El tipo de mezcla puede ser
 
 - `"inner"` (por defecto): El DataFrame resultante solo contiene las filas cuyos valores en la clave están en los dos DataFrames. Es equivalente a la intersección de conjuntos.
 
-    ```python
-    >>> import pandas as pd
-    >>> df1 = pd.DataFrame({"Nombre":["Carmen", "Luis", "María"],  "Sexo":["Mujer", "Hombre", "Mujer"]})
-    >>> df2 = pd.DataFrame({"Nombre":["María", "Pedro", "Luis"], "Edad":[25, 30, 18]]})
-    >>> df = pd.merge(df1, df2, on="Nombre")
-    >>> print(df)
+```python  linenums="1"
+import pandas as pd
+df1 = pd.DataFrame({"Nombre":["Carmen", "Luis", "María"],  "Sexo":["Mujer", "Hombre", "Mujer"]})
+df2 = pd.DataFrame({"Nombre":["María", "Pedro", "Luis"], "Edad":[25, 30, 18]})
+df = pd.merge(df1, df2, on="Nombre")
+print(df)
+```
+`output`
+```python 
       Nombre    Sexo  Edad
     0   Luis  Hombre    18
     1  María   Mujer    25
-    ```
+```
 
 - `"outer"`: El DataFrame resultante contiene todas las filas de los dos DataFrames. Si una fila de un DataFrame no puede emparejarse con otra los mismos valores en la clave en el otro DataFrame, la fila se añade igualmente al DataFrame resultante rellenando las columnas del otro DataFrame con el valor `NaN`.
 Es equivalente a la unión de conjuntos.
 
-    ```python
-    >>> import pandas as pd
-    >>> df1 = pd.DataFrame({"Nombre":["Carmen", "Luis", "María"],  "Sexo":["Mujer", "Hombre", "Mujer"]})
-    >>> df2 = pd.DataFrame({"Nombre":["María", "Pedro", "Luis"], "Edad":[25, 30, 18]]})
-    >>> df = pd.merge(df1, df2, on="Nombre", how="outer")
-    >>> print(df)
+```python linenums="1"
+import pandas as pd
+df1 = pd.DataFrame({"Nombre":["Carmen", "Luis", "María"],  "Sexo":["Mujer", "Hombre", "Mujer"]})
+df2 = pd.DataFrame({"Nombre":["María", "Pedro", "Luis"], "Edad":[25, 30, 18]})
+df = pd.merge(df1, df2, on="Nombre", how="outer")
+print(df)
+```
+`output`
+```python 
        Nombre    Sexo  Edad
     0  Carmen   Mujer   NaN
     1    Luis  Hombre  18.0
     2   María   Mujer  25.0
     3   Pedro     NaN  30.0
-    ```
+```
 
 - `"left"`: El DataFrame resultante contiene todas las filas del primer DataFrame y descarta las filas del segundo DataFrame que no pueden emparejarse con alguna fila del primer DataFrame a través de la clave.
 
-    ```python
-    >>> import pandas as pd
-    >>> df1 = pd.DataFrame({"Nombre":["Carmen", "Luis", "María"],  "Sexo":["Mujer", "Hombre", "Mujer"]})
-    >>> df2 = pd.DataFrame({"Nombre":["María", "Pedro", "Luis"], "Edad":[25, 30, 18]]})
-    >>> df = pd.merge(df1, df2, on="Nombre", how="left")
-    >>> print(df)
+```python linenums="1"
+import pandas as pd
+df1 = pd.DataFrame({"Nombre":["Carmen", "Luis", "María"],  "Sexo":["Mujer", "Hombre", "Mujer"]})
+df2 = pd.DataFrame({"Nombre":["María", "Pedro", "Luis"], "Edad":[25, 30, 18]})
+df = pd.merge(df1, df2, on="Nombre", how="left")
+print(df)
+```
+`output`
+```python 
        Nombre    Sexo  Edad
     0  Carmen   Mujer   NaN
     1    Luis  Hombre  18.0
     2   María   Mujer  25.0
-    ```
+```
 
 - `"right"`: El DataFrame resultante contiene todas las filas del segundo DataFrame y descarta las filas del primer DataFrame que no pueden emparejarse con alguna fila del segundo DataFrame a través de la clave.
 
-    ```python
-    >>> import pandas as pd
-    >>> df1 = pd.DataFrame({"Nombre":["Carmen", "Luis", "María"],  "Sexo":["Mujer", "Hombre", "Mujer"]})
-    >>> df2 = pd.DataFrame({"Nombre":["María", "Pedro", "Luis"], "Edad":[25, 30, 18]]})
-    >>> df = pd.merge(df1, df2, on="Nombre", how="right")
-    >>> print(df)
+```python linenums="1"
+import pandas as pd
+df1 = pd.DataFrame({"Nombre":["Carmen", "Luis", "María"],  "Sexo":["Mujer", "Hombre", "Mujer"]})
+df2 = pd.DataFrame({"Nombre":["María", "Pedro", "Luis"], "Edad":[25, 30, 18]})
+df = pd.merge(df1, df2, on="Nombre", how="right")
+print(df)
+```
+`output`
+```python 
       Nombre    Sexo  Edad
     0  María   Mujer    25
     1  Pedro     NaN    30
     2   Luis  Hombre    18
-    ```
+```

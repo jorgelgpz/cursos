@@ -15,15 +15,13 @@ Para asignar a una variable un valor introducido por el usuario en la consola se
 
 <i class="fa fa-exclamation-triangle" style="color:red;"></i> _El valor devuelto siempre es una cadena, incluso si el usuario introduce un dato numérico._
 
-```python
->>> language = input('¿Cuál es tu lenguaje favorito? ')
-¿Cuál es tu lenguaje favorito? Python
->>> language
-'Python'
->>> age = input('¿Cuál es tu edad? ')
-¿Cuál es tu edad? 20
->>> age
-'20'
+```python linenums="1"
+language = input('¿Cuál es tu lenguaje favorito? ')
+Python
+language # output 'Python'
+age = input('¿Cuál es tu edad? ')
+20
+age # output '20'
 ```
 
 ### Salida por terminal (`print()`)
@@ -39,16 +37,11 @@ donde
 - `end` indica la cadena final de la impresión, que por defecto es un cambio de línea `\n`.
 - `file` indica la dirección del flujo de salida, que por defecto es la salida estándar `sys.stdout`.
 
-```python
->>> print('Hola')
-Hola
->>> name = 'Alf'
->>> print('Hola', name)
-Hola Alf
->>> print('El valor de pi es', 3.1415)
-El valor de pi es 3.1415
->>> print('Hola', name, sep='')
-HolaAlf
->>> print('Hola', name, end='!\n')
-Hola Alf!
+```python linenums="1"
+print('Hola') # output Hola
+name = 'Alf' 
+print('Hola', name) # output Hola Alf
+print('El valor de pi es', 3.1415) # output El valor de pi es 3.1415
+print('Hola', name, sep='') # output HolaAlf
+print('Hola', name, end='!\n') # output Hola Alf!
 ```

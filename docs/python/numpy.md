@@ -13,7 +13,7 @@ Incorpora una nueva clase de objetos llamados **arrays** que permite representar
 
 La ventaja de Numpy frente a las listas predefinidas en Python es que el procesamiento de los arrays se realiza mucho más rápido (hasta 50 veces más) que las listas, lo cual la hace ideal para el procesamiento de vectores y matrices de grandes dimensiones.
 
-![Logo librería numpy](../img/numpy-logo.png)
+![Logo librería numpy](../assets/numpy-logo.png)
 
 ## La clase de objetos `array`
 
@@ -21,7 +21,7 @@ Un array es una estructura de datos de un mismo tipo organizada en forma de tabl
 
 Las dimensiones de un array también se conocen como **ejes**.
 
-![Arrays](../img/arrays.png)
+![Arrays](../assets/arrays.png)
 
 ## Creación de arrays
 
@@ -36,22 +36,26 @@ Para crear un array se utiliza la siguiente función de NumPy
 
 <i class="fa fa-exclamation-triangle" style="color:red;"></i> Los elementos de la lista o tupla deben ser del mismo tipo.
 
-```python
->>> # Array de una dimensión
->>> a1 = np.array([1, 2, 3])
->>> print(a1)
-[1 2 3]
->>> # Array de dos dimensiones
->>> a2 = np.array([[1, 2, 3], [4, 5, 6]])
->>> print(a2)
-[[1 2 3]
- [4 5 6]]
->>> # Array de tres dimensiones
->>> a3 = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
->>> print(a3)
+
+```{ .py .yaml .annotate hl_lines="1" } 
+# (1)!
+import numpy as np
+# Array de una dimensión
+a1 = np.array([1, 2, 3])
+print(a1) # output [1 2 3]
+# Array de dos dimensiones
+a2 = np.array([[1, 2, 3], [4, 5, 6]])
+print(a2) # output [[1 2 3],[4 5 6]]
+# Array de tres dimensiones
+a3 = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+```
+
+1.  Debes instalar la libreria de numpy en tu intérprete con el siguiente comando `pip install numpy`.
+
+`output`
+```py 
 [[[ 1  2  3]
   [ 4  5  6]]
-
  [[ 7  8  9]
   [10 11 12]]]
 ```
@@ -74,17 +78,31 @@ Otras funciones útiles que permiten generar arrays son:
 
 - `np.random.random(dimensiones)` : Crea y devuelve una referencia a un array con las dimensiones especificadas en la tupla `dimensiones` cuyos elementos son aleatorios.
 
-```python
->>> print(np.zeros(3,2))
+```python linenums="1"
+print(np.zeros((2,3)))
+```
+`output`
+```py 
 [[0. 0. 0.]
  [0. 0. 0.]]
->>> print(np.idendity(3))
+```
+```python linenums="1"
+print(np.identity(3))
+```
+`output`
+```py 
 [[1. 0. 0.]
  [0. 1. 0.]
  [0. 0. 1.]]
->>> print(np.arange(1, 10, 2))
-[1 3 5 7 9]
->>> print(np.linspace(0, 10, 5))
+```
+```python linenums="1"
+print(np.arange(1, 10, 2)) # output [1 3 5 7 9]
+```
+```python linenums="1"
+print(np.linspace(0, 10, 5))
+```
+`output`
+```py 
 [ 0.   2.5  5.   7.5 10. ]
 ```
 
@@ -108,13 +126,15 @@ Al igual que para listas, los índices de cada dimensión comienzan en 0.
 
 También es posible obtener subarrays con el operador dos puntos `:` indicando el índice inicial y el siguiente al final para cada dimensión, de nuevo separados por comas.
 
-```python
->>> a = np.array([[1, 2, 3], [4, 5, 6]])
->>> print(a[1, 0])  # Acceso al elemento de la fila 1 columna 0
-4
->>> print(a[1][0])  # Otra forma de acceder al mismo elemento
-4
->>> print(a[:, 0:2])
+```python linenums="1"
+a = np.array([[1, 2, 3], [4, 5, 6]])
+print(a[1, 0])  # Acceso al elemento de la fila 1 columna 0 # output 4
+print(a[1][0])  # Otra forma de acceder al mismo elemento # output 4
+
+print(a[:, 0:2])
+```
+`output`
+```py 
 [[1 2]
  [4 5]]
 ```
@@ -125,13 +145,11 @@ Una característica muy útil de los arrays es que es muy fácil obtener otro ar
 
 - `a[condicion]` : Devuelve una lista con los elementos del array `a` que cumplen la condición `condicion`.
 
-  ```python
-  >>> a = np.array([[1, 2, 3], [4, 5, 6]])
-  >>> print(a[(a % 2 == 0)])
-  [2 4 6]
-  >>> print(a[(a % 2 == 0) &  (a > 2)])
-  [2 4]
-  ```
+```python linenums="1"
+a = np.array([[1, 2, 3], [4, 5, 6]])
+print(a[(a % 2 == 0)]) # output [2 4 6]
+print(a[(a % 2 == 0) &  (a > 2)]) # output [2 4]
+```
 
 ## Operaciones matemáticas con arrays
 
@@ -141,16 +159,29 @@ Las operaciones a nivel de elemento operan los elementos que ocupan la misma pos
 
 Los operadores mamemáticos `+`, `-`, `*`, `/`, `%`, `**` se utilizan para la realizar suma, resta, producto, cociente, resto y potencia a nivel de elemento.
 
-```python
->>> a = np.array([[1, 2, 3], [4, 5, 6]])
->>> b = np.array([[1, 1, 1], [2, 2, 2]])
->>> print(a + b )
+```python linenums="1"
+a = np.array([[1, 2, 3], [4, 5, 6]])
+b = np.array([[1, 1, 1], [2, 2, 2]])
+print(a + b )
+```
+`output`
+```py 
 [[2 3 4]
  [6 7 8]]
->>> print(a / b)
+```
+```python linenums="1"
+print(a / b)
+```
+`output`
+```py 
 [[1.  2.  3. ]
  [2.  2.5 3. ]]
->>> print(a ** 2)
+```
+```python linenums="1"
+print(a ** 2)
+```
+`output`
+```py 
 [[ 1  4  9]
  [16 25 36]]
 ```
@@ -165,15 +196,13 @@ Para realizar el producto escalar de dos vectores se utiliza el operador `@` o e
 
 - `u.dot(v)`: Devuelve el producto escalar de los vectores `u` y `v`.
 
-  ```python
-  >>> import numpy as np
-  >>> a = np.array([1, 2, 3])
-  >>> b = np.array([1, 0, 1])
-  >>> print(a @ b)
-  4
-  >>> print(a.dot(b))
-  4
-  ```
+```python linenums="1"
+import numpy as np
+a = np.array([1, 2, 3])
+b = np.array([1, 0, 1])
+print(a @ b) # output 4
+print(a.dot(b)) # output 4
+```
 
 ### Módulo de un vector
 
@@ -181,12 +210,11 @@ Para calcular el módulo de un vector se utiliza el siguiente método:
 
 - `norm(v)`: Devuelve el módulo del vector `v`.
 
-  ```python
-  >>> import numpy as np
-  >>> a = np.array([3, 4])
-  >>> print(np.linalg.norm(a))
-  5.0
-  ```
+```python linenums="1"
+import numpy as np
+a = np.array([3, 4])
+print(np.linalg.norm(a)) # output 5.0
+```
 
 ### Producto de dos matrices
 
@@ -194,17 +222,25 @@ Para realizar el producto matricial se utiliza el mismo operador `@` y método q
 
 - `a.dot(b)` : Devuelve el producto matricial de las matrices `a` y `b` siempre y cuando sus dimensiones sean compatibles.
 
-  ```python
-  >>> import numpy as np
-  >>> a = np.array([[1, 2, 3], [4, 5, 6]])
-  >>> b = np.array([[1, 1], [2, 2], [3, 3]])
-  >>> print(a @ b)
+```python linenums="1"
+import numpy as np
+a = np.array([[1, 2, 3], [4, 5, 6]])
+b = np.array([[1, 1], [2, 2], [3, 3]])
+print(a @ b)
+```
+`output`
+```py  
   [[14 14]
   [32 32]]
-  >>> print(a.dot(b))
+```
+```python linenums="1"  
+print(a.dot(b))
+```
+`output`
+```py 
   [[14 14]
   [32 32]]
-  ```
+```
 
 ### Matriz traspuesta
 
@@ -212,14 +248,17 @@ Para trasponer una matriz se utiliza el método
 
 - `a.T` : Devuelve la matriz traspuesta de la matriz `a`.
 
-  ```python
-  >>> import numpy as np
-  >>> a = np.array([[1, 2, 3], [4, 5, 6]])
-  >>> print(a.T)
+```python linenums="1"
+import numpy as np
+a = np.array([[1, 2, 3], [4, 5, 6]])
+print(a.T)
+```
+`output`
+```py 
   [[1 4]
   [2 5]
   [3 6]]
-  ```
+```
 
 ### Traza de una matriz
 
@@ -227,12 +266,11 @@ La traza de una matriz cuadrada se calcula con el siguiente método:
 
 - `a.trace()` : Devuelve la traza (suma de la diagonal principal) de la matriz cuadrada `a`. 
 
-  ```python
-  >>> import numpy as np
-  >>> a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-  >>> print(a.trace())
-  15
-  ```
+```python linenums="1"
+import numpy as np
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(a.trace()) # output 15
+```
 
 ### Determinante de una matriz
 
@@ -241,12 +279,11 @@ El determinante de una matriz cuadrada se calcula con la siguiente función:
 
 - `det(a)` : Devuelve el determinante de la matriz cuadrada `a`. 
 
-  ```python
-  >>> import numpy as np
-  >>> a = np.array([[1, 2], [3, 4]])
-  >>> print(np.linalg.det(a))
-  -2.0
-  ```
+```python linenums="1"
+import numpy as np
+a = np.array([[1, 2], [3, 4]])
+print(np.linalg.det(a)) # output -2.0000000000000004
+```
 
 ### Matriz inversa
 
@@ -254,13 +291,16 @@ La inversa de una matriz se calcula con la siguiente función:
 
 - `inv(a)` : Devuelve la matriz inversa de la matriz cuadrada `a`. 
 
-  ```python
-  >>> import numpy as np
-  >>> a = np.array([[1, 2], [3, 4]])
-  >>> print(np.linalg.inv(a))
+```python  linenums="1"
+import numpy as np
+a = np.array([[1, 2], [3, 4]])
+print(np.linalg.inv(a))
+```
+`output`
+```py 
   [[-2.   1. ]
   [ 1.5 -0.5]]
-  ```
+```
 
 ### Autovalores de una matriz
 
@@ -268,12 +308,15 @@ Los autovalores de una matriz cuadrada se calculan con la siguiente función:
 
 - `eigvals(a)` : Devuelve los autovalores de la matriz cuadrada `a`.
 
-  ```python
-  >>> import numpy as np
-  >>> a = np.array([[1, 1, 0], [1, 2, 1], [0, 1, 1]])
-  >>> print(np.linalg.eigvals(a))
+```python linenums="1"
+import numpy as np
+a = np.array([[1, 1, 0], [1, 2, 1], [0, 1, 1]])
+print(np.linalg.eigvals(a))
+```
+`output`
+```py 
   [ 3.00000000e+00  1.00000000e+00 -3.36770206e-17]
-  ```
+```
 
 ### Autovectores de una matriz
 
@@ -281,14 +324,17 @@ Los autovectores de una matriz cuadrada se calculan con la siguiente función:
 
 - `eig(a)` : Devuelve los autovalores y los autovectores asociados de la matriz cuadrada `a`. 
 
-  ```python
-  >>> import numpy as np
-  >>> a = np.array([[1, 1, 0], [1, 2, 1], [0, 1, 1]])
-  >>> print(np.linalg.eig(a))
+```python linenums="1"
+import numpy as np
+a = np.array([[1, 1, 0], [1, 2, 1], [0, 1, 1]])
+print(np.linalg.eig(a))
+```
+`output`
+```py 
   (array([ 3.00000000e+00,  1.00000000e+00, -3.36770206e-17]), array([[-4.08248290e-01,  7.07106781e-01,  5.77350269e-01],
         [-8.16496581e-01,  2.61239546e-16, -5.77350269e-01],
         [-4.08248290e-01, -7.07106781e-01,  5.77350269e-01]]))
-  ```
+```
 
 ### Solución de un sistema de ecuaciones
 
@@ -296,13 +342,12 @@ Para resolver un sistema de ecuaciones lineales se utiliza la función siguiente
 
 - `solve(a, b)` : Devuelve la solución del sistema de ecuaciones lineales con los coeficientes de la matriz `a` y los términos independientes de la matriz `b`. 
 
-  ```python
-  >>> import numpy as np
-  # Sistema de dos ecuaciones y dos incógnitas
-  # x + 2y = 1
-  # 3x + 5y = 2 
-  >>> a = np.array([[1, 2], [3, 5]])
-  >>> b = np.array([1, 2])
-  >>> print(np.linalg.solve(a, b))
-  [-1.  1.]
-  ```
+```python linenums="1"
+import numpy as np
+# Sistema de dos ecuaciones y dos incógnitas
+# x + 2y = 1
+# 3x + 5y = 2 
+a = np.array([[1, 2], [3, 5]])
+b = np.array([1, 2])
+print(np.linalg.solve(a, b)) # output [-1.  1.]
+```

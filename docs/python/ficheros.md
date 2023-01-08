@@ -32,10 +32,9 @@ Una vez creado el fichero, para escribir datos en él se utiliza el siguiente m�
 
 - `f.write(c)` : Escribe la cadena `c` en el fichero referenciado por `f` y devuelve el número de caracteres escritos. 
 
-```python
->>> f = open('saludo.txt', 'w')
->>> f.write('¡Bienvenido a Python!')
-21
+```python linenums="1"
+f = open('saludo.txt', 'w')
+f.write('¡Bienvenido a Python!') # output 21
 ```
 
 ### Añadir datos a un fichero
@@ -46,10 +45,9 @@ Si en lugar de crear un fichero nuevo queremos añadir datos a un fichero existe
 
 Una vez abierto el fichero, se utiliza el método de escritura anterior y los datos se añaden al final del fichero.
 
-```python
->>> f = open('saludo.txt', 'a')
->>> f.write('\n¡Hasta pronto!')
-15
+```python linenums="1"
+f = open('saludo.txt', 'a')
+f.write('\n¡Hasta pronto!') # output 15
 ```
 
 ### Leer datos de un fichero
@@ -64,17 +62,22 @@ Una vez abierto el fichero, se puede leer todo el contenido del fichero o se pue
 
 - `f.readlines()` : Devuelve una lista de cadenas de caracteres donde cada cadena es una linea del fichero referenciado por `f`.
 
-```python
->>> f = open('saludo.txt', 'r')
->>> print(f.read())
+```python linenums="1"
+f = open('saludo.txt', 'r')
+print(f.read())
+```
+`output`
+```python 
 ¡Bienvenido a Python!
 ¡Hasta pronto!
 ```
 
-```python
->>> f = open('saludo.txt', 'r')
->>> lineas = f.readlines()
->>> print(lineas)
+```python linenums="1"
+f = open('saludo.txt', 'r')
+lineas = f.readlines()
+print(lineas)
+```
+```python 
 ['Bienvenido a Python!\n', '¡Hasta pronto!']
 ```
 
@@ -86,13 +89,14 @@ Para cerrar un fichero se utiliza el siguiente método:
 
 Cuando se termina de trabajar con un fichero conviene cerrarlo, sobre todo si se abre en modo escritura, ya que mientras está abierto en este modo no se puede abrir por otra aplicación. Si no se cierra explícitamente un fichero, Python intentará cerrarlo cuando estime que ya no se va a usar más.
 
-```python
->>> f = open('saludo.txt'):
->>> print(f.read())
-¡Bienvenido a Python!
-¡Hasta pronto!
->>> f.close()  # Cierre del fichero
->>> print(f.read())  # Produce un error
+```python linenums="1"
+f = open('saludo.txt', 'r')
+print(f.read()) # output ¡Bienvenido a Python! Hasta pronto!
+f.close()  # Cierre del fichero
+print(f.read())  # Produce un error
+```
+`output`
+```python 
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ValueError: I/O operation on closed file.
@@ -107,16 +111,19 @@ Para despreocuparnos del cierre de un fichero cuando ya no es necesario y no ten
 
 Esta estructura abre el fichero con la ruta `ruta` en el modo `modo` (`'w'` para escribir, `'a'` para añadir y `'r'` para leer) y devuelve una referencia al mismo en la variable `f`. El fichero permanece abierto mientras se ejecuta el bloque de código asociado y se cierra automáticamente cuando termina la ejecución del bloque. 
 
-```python
->>> with open('saludo.txt', 'w') as f:
-...     f.write("Hola de nuevo")
-... 
-13
->>> with open('saludo.txt', 'r') as f:
-...     print(f.read())
-... 
-Hola de nuevo
->>> print(f.read())  # Produce un error al estar el fichero cerrado
+```python linenums="1"
+with open('saludo.txt', 'w') as f:
+    f.write("Hola de nuevo")
+
+# output 13
+with open('saludo.txt', 'r') as f:
+    print(f.read())
+
+# output Hola de nuevo
+print(f.read())  # Produce un error al estar el fichero cerrado
+```
+`output`
+```python 
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ValueError: I/O operation on closed file.
@@ -136,20 +143,19 @@ Antes de borrar o renombra un directorio conviene comprobar que existe para que 
 
 ### Renombrado y borrado de un fichero o directorio
 
-```python
->>> import os
->>> f = 'saludo.txt'
->>> if os.path.isfile(f):
-...     os.rename(f, 'bienvenida.txt') # renombrado
-... else:
-...     print('¡El fichero', f, 'no existe!')
-...
->>> f = 'bienvenida.txt'
->>> if os.path.isfile(f):
-...     os.remove(f) # borrado
-... else:
-...     print('¡El fichero', f, 'no existe!')
-...
+```python linenums="1"
+import os
+f = 'saludo.txt'
+if os.path.isfile(f):
+    os.rename(f, 'bienvenida.txt') # renombrado
+else:
+    print('¡El fichero', f, 'no existe!')
+    
+f = 'bienvenida.txt'
+if os.path.isfile(f):
+    os.remove(f) # borrado
+else:
+    print('¡El fichero', f, 'no existe!')
 ```
 
 ### Creación, cambio y eliminación de directorios
@@ -172,13 +178,13 @@ Para leer un fichero de internet hay que utilizar la función `urlopen` del mód
 
 `urlopen(url)` : Abre el fichero con la `url` especificada y devuelve un objeto del tipo fichero al que se puede acceder con los métodos de lectura de ficheros anteriores.
 
-```python
->>> from urllib import request
->>> f = request.urlopen('https://raw.githubusercontent.com/asalber/asalber.github.io/master/README.md')
->>> datos = f.read()
->>> print(datos.decode('utf-8'))
-Aprende con Alf
-===============
-
-Este es el repositorio del sitio web Aprende con Alf: http://aprendeconalf.es
+```python linenums="1"
+from urllib import request
+f = request.urlopen('https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/README.md')
+datos = f.read()
+print(datos.decode('utf-8'))
+```
+`output`
+```python 
+Aprende Python con Profe Jorge
 ```

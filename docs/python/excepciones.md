@@ -13,8 +13,11 @@ Python utiliza un objeto especial llamado **excepción** para controlar cualquie
 
 Cuando ocurre un error durante la ejecución de un programa, Python crea una excepción. Si no se controla esta excepción la ejecución del programa se detiene y se muestra el error (_traceback_).
 
-```python
->>> print(1 / 0)  # Error al intentar dividir por 0.
+```python linenums="1"
+print(1 / 0)  # Error al intentar dividir por 0.
+```
+`output`
+```python 
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ZeroDivisionError: division by zero
@@ -50,27 +53,25 @@ Esta instrucción ejecuta el primer bloque de código y si se produce un error q
 
 ### Control de excepciones
 
-```python
->>> def division(a, b):
-...     try:
-...         result = a / b
-...     except ZeroDivisionError:
-...         print('¡No se puede dividir por cero!')
-...     else:
-...         print(result)
-...
->>> division(1, 0)
-¡No se puede dividir por cero!
->>> division(1, 2)
-0.5
+```python linenums="1"
+def division(a, b):
+    try:
+        result = a / b
+    except ZeroDivisionError:
+        print('¡No se puede dividir por cero!')
+    else:
+        print(result)
+
+division(1, 0) # output ¡No se puede dividir por cero!
+division(1, 2) # output 0.5
 ```
 
-```python
->>> try:
-...     f = open('fichero.txt')  # El fichero no existe
-... except FileNotFoundError:
-...     print('¡El fichero no existe!')
-... else:
-...     print(f.read())
-¡El fichero no existe!
+```python linenums="1"
+try:
+    f = open('fichero.txt')  # output El fichero no existe
+except FileNotFoundError:
+    print('¡El fichero no existe!')
+else:
+    print(f.read())
+
 ```

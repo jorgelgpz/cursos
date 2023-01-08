@@ -26,23 +26,23 @@ Pueden aparecer varios bloques `elif` pero solo uno `else` al final.
 
 La instrucción condicional permite evaluar el estado del programa y tomar decisiones sobre qué código ejecutar en función del mismo.
 
-```python
->>> edad = 14
->>> if edad <= 18 : 
-...     print('Menor')
-... elif edad > 65:
-...     print('Jubilado')
-... else:
-...     print('Activo')
-...
-Menor
->>> age = 20
->>> if edad <= 18 : 
-...     print('Menor')
-... elif edad > 65:
-...     print('Jubilado')
-... else:
-...     print('Activo')
-...
-Activo
+```python linenums="1"
+edad = 14
+if edad <= 18 : 
+    print('Menor')
+elif edad > 65:
+    print('Jubilado')
+else:
+    print('Activo')
+
+# output Menor
+age = 20
+if edad <= 18 : 
+    print('Menor')
+elif edad > 65:
+    print('Jubilado')
+else:
+    print('Activo')
+
+# output Activo
 ```

@@ -18,32 +18,37 @@ Se puede interrumpir en cualquier momento la ejecución del bloque de código co
 
 <i class="fa fa-exclamation-triangle" style="color:red;"></i> _El bloque de código debe estar indentado por 4 espacios._
 
-```python
->>> # Pregunta al usuario por un número hasta que introduce 0.
->>> num = None
->>> while num != 0:
-...     num = int(input('Introduce un número: '))
-... 
+```python linenums="1"
+# Pregunta al usuario por un número hasta que introduce 0.
+num = None
+while num != 0:
+    num = int(input('Introduce un número: '))
+ 
+```
+`output`
+```python 
 Introduce un número: 2
 Introduce un número: 1
 Introduce un número: 0
->>> 
 ```
 
 Alternativa:
 
-```python
->>> # Pregunta al usuario por un número hasta que introduce 0.
->>> while True:
-...     num = int(input('Introduce un número: '))
-...     if num == 0:
-...         break
-...
-Introduce un número: 2
-Introduce un número: 1
-Introduce un número: 0
->>>
+```python linenums="1"
+# Pregunta al usuario por un número hasta que introduce 0.
+while True:
+    num = int(input('Introduce un número: '))
+    if num == 0:
+        break
 ```
+`output`
+```python 
+Introduce un número: 2
+ntroduce un número: 1
+Introduce un número: 0
+```
+## Practica el while
+<iframe frameborder="0" width="100%" height="250px" src="https://replit.com/@jorgelgpz/python-while?embed=true"></iframe>
 
 ## Bucles iterativos (`for`)
 
@@ -63,11 +68,12 @@ A menudo se usan con la instrucción `range`:
 - `range(fin)` : Genera una secuencia de números enteros desde 0 hasta `fin-1`.
 - `range(inicio, fin, salto)` : Genera una secuencia de números enteros desde `inicio` hasta `fin-1` con un incremento de `salto`.
 
-```python
->>> palabra = 'Python'
->>> for letra in palabra:
-...     print(letra)
-... 
+```python linenums="1"
+palabra = 'Python'
+for letra in palabra:
+    print(letra)
+```
+C
 P
 y
 t
@@ -76,9 +82,9 @@ o
 n
 ```
 
-```python
->>> for i in range(1, 10, 2):
-...     print(i, end=", ")
-...
-1, 3, 5, 7, 9, >>>
+```python linenums="1"
+for i in range(1, 10, 2):
+    print(i, end=", ") # output 1, 3, 5, 7, 9,
 ```
+## Practica el for
+<iframe frameborder="0" width="100%" height="250px" src="https://replit.com/@jorgelgpz/python-for?embed=true"></iframe>

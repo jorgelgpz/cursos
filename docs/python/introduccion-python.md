@@ -34,37 +34,41 @@ Fue creado por Guido van Rossum en 1990 aunque actualmente es desarrollado y man
 
 Se ejecuta cada instrucción que introduce el usuario de manera interactiva.
 
-```sh
+```{ .py .yaml .annotate hl_lines="2" } 
+# (1)!
 > python
->>> name = "Alf"
->>> print("Hola ", name)
-Hola Alf
+name = "Alf"
+print("Hola ", name)
+# output Hola Alf
 ```
+
+1.  El comando `#!sh python` permite ingresar al interprete de python.
+
+
 
 ### Interpretado en fichero
 
 Se leen y se ejecutan una a una todas las instrucciones del fichero.
 
-```python
-# Fichero hola.py
+```py linenums="1" title="hola.py"
 name = "Alf"
 print("Hola ", name)
 ```
 
-```sh
+```py 
 > python hola.py
 Hola Alf
 ```
 
 También se puede hacer el fichero ejecutable indicando en la primera línea la ruta hasta el intérprete de Python.
 
-```{python}
+```py 
 #!/usr/bin/python3
 name = "Alf"
 print("Hola", name)
 ```
 
-```sh
+```sh 
 > chmod +x hola.py
 > ./hola.py
 Hola Alf
@@ -72,13 +76,12 @@ Hola Alf
 
 ### Compilado a bytecode
 
-```python
-# Fichero hola.py
+```py linenums="1" title="hola.py"
 name = "Alf"
 print("Hola " + name)
 ```
 
-```sh
+```sh 
 > python -O -m py_compile hola.py
 > python __pycache__/hola.cpython-37.pyc
 Hola Alf
@@ -88,7 +91,7 @@ Hola Alf
 
 Hay distintos paquetes que permiten compilar a un ejecutable del sistema operativo usado, por ejemplo `pyinstaller`.
 
-```sh
+```bash   
 > conda install pyinstaller
 > pyinstaller hola.py
 > ./dist/hola/hola
