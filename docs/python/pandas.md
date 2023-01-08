@@ -485,7 +485,7 @@ Dependiendo del tipo de fichero, existen distintas funciones para importar un Da
 import pandas as pd
 # Importación del fichero datos-colesteroles.csv
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesteroles.csv', sep=';', decimal=',')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesteroles.csv', sep=';', decimal=',')
 print(df.head())
 ```
 `output`
@@ -529,7 +529,7 @@ Existen varias propiedades o métodos para ver las características de un DataFr
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 df.info()
 ```
 `output`
@@ -576,7 +576,7 @@ Para cambiar el nombre de las filas y las columnas de un DataFrame se utiliza el
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 print(df.rename(columns={'nombre':'nombre y apellidos', 'altura':'estatura'}, index={0:1000, 1:1001, 2:1002}))
 ```
 `output`
@@ -599,7 +599,7 @@ Aunque el índice de un DataFrame suele fijarse en la creación del mismo, en oc
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 print(df.set_index("nombre").head())
 ```
 `output`
@@ -623,7 +623,7 @@ Para reordenar los índices de las filas y las columnas de un DataFrame, así co
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 print(df.reindex(index=[4, 3, 1], columns=['nombre', 'tensión', 'colesterol']))
 ```
 `output`
@@ -649,7 +649,7 @@ El acceso a los datos de un DataFrame se puede hacer a través de posiciones o t
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 print(df.iloc[1, 3]) # output 65
 print(df.iloc[1, :2])
 ```
@@ -672,7 +672,7 @@ edad                   32
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 print(df.loc[2, 'colesterol']) # output 191
 print(df.loc[:3, ('colesterol','peso')])
 ```
@@ -708,7 +708,7 @@ El procedimiento para añadir una nueva columna a un DataFrame es similar al de 
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 df['diabetes'] = pd.Series([False, False, True, False, True])
 print(df)
 ```
@@ -731,7 +731,7 @@ Puesto que los datos de una misma columna de un DataFrame son del mismo tipo, es
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 print(df['altura']*100)
 ```
 `output`
@@ -763,7 +763,7 @@ Para aplicar funciones a todos los elementos de una columna se utiliza el siguie
 import pandas as pd
 from math import log
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 print(df['altura'].apply(log))
 ```
 `output`
@@ -812,7 +812,7 @@ Al igual que para las series, los siguientes métodos permiten resumir la inform
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 df.edad.count()  # Tamaño muestral
 14
 print(df.edad.mean())  # Media # output 38.214285714285715
@@ -879,7 +879,7 @@ Para eliminar columnas de un DataFrame se utilizan los siguientes métodos:
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 edad = df.pop('edad')
 print(df)
 ```
@@ -914,7 +914,7 @@ Para añadir una fila a un DataFrame se utiliza el siguiente método:
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 df = df.append(pd.Series(['Carlos Rivas', 28, 'H', 89.0, 1.78, 245.0], index=['nombre','edad','sexo','peso','altura','colesterol']), ignore_index=True)
 print(df.tail())
 ```
@@ -937,7 +937,7 @@ Para eliminar filas de un DataFrame se utilizan el siguiente método:
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 print(df.drop([1, 3]))
 ```
 `output`
@@ -958,7 +958,7 @@ Una operación bastante común con un DataFrame es obtener las filas que cumplen
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 print(df[(df['sexo']=='H') & (df['colesterol'] > 260)])
 ```
 `output`
@@ -979,7 +979,7 @@ Para ordenar un DataFrame de acuerdo a los valores de una determinada columna se
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 print(df.sort_values('colesterol'))
 ```
 `output`
@@ -1001,7 +1001,7 @@ Para eliminar las filas de un DataFrame que contienen datos desconocidos `NaN` o
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 print(df.dropna())
 ```
 `output`
@@ -1029,7 +1029,7 @@ Para dividir un DataFrame en grupos se utiliza el siguiente método:
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 print(df.groupby('sexo').groups) # output {'H': Int64Index([0, 2, 5, 6, 8, 9, 11, 12], dtype='int64'), 'M': Int64Index([1, 3, 4, 7, 10, 13], dtype='int64')}
 print(df.groupby(['sexo','edad']).groups) # output {('H', 18): Int64Index([0], dtype='int64'), ('H', 24): Int64Index([2], dtype='int64'), ('H', 27): Int64Index([12], dtype='int64'), ('H', 35): Int64Index([8], dtype='int64'), ('H', 46): Int64Index([9], dtype='int64'), ('H', 51): Int64Index([6], dtype='int64'), ('H', 58): Int64Index([11], dtype='int64'), ('H', 68): Int64Index([5], dtype='int64'), ('M', 20): Int64Index([13], dtype='int64'), ('M', 22): Int64Index([7], dtype='int64'), ('M', 32): Int64Index([1], dtype='int64'), ('M', 35): Int64Index([3], dtype='int64'), ('M', 46): Int64Index([4], dtype='int64'), ('M', 53): Int64Index([10], dtype='int64')}
 ```
@@ -1041,7 +1041,7 @@ Para obtener un grupo concreto se utiliza el siguiente método:
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 print(df.groupby('sexo').get_group('M'))
 ```
 `output`
@@ -1073,7 +1073,7 @@ Una función de agregación toma como argumento una lista y devuelve una único 
 ```python linenums="1"
 import pandas as pd
 df = pd.read_csv(
-'https://raw.githubusercontent.com/jorgelgpz/mkdocs1/main/datos/colesterol.csv')
+'https://raw.githubusercontent.com/jorgelgpz/cursos/main/datos/colesterol.csv')
 
 import numpy as np
 print(df.groupby('sexo').agg(np.mean))
