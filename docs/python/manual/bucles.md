@@ -73,7 +73,7 @@ palabra = 'Python'
 for letra in palabra:
     print(letra)
 ```
-C
+```python 
 P
 y
 t
