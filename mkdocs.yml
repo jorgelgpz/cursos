@@ -53,6 +53,7 @@ theme:
     - navigation.tabs.sticky
     - content.code.annotate
     - navigation.footer
+    - content.code.copy
   palette:
 
     # Palette toggle for light mode
