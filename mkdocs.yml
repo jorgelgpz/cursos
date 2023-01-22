@@ -22,6 +22,8 @@ nav:
         - Excepciones: 'python/manual/excepciones.md'
         - Programación Orientada a Objetos: 'python/manual/objetos.md'
         - Módulos: 'python/manual/modulos.md'
+        - Filter: 'python/manual/filter.md'
+        - Enumerate: 'python/manual/enumerate.md'
         - La librería Datetime: 'python/manual/datetime.md'
         - La librería Numpy: 'python/manual/numpy.md'
         - La librería Pandas: 'python/manual/pandas.md'

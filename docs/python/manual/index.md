@@ -20,6 +20,8 @@ En este manual se presentan los conceptos básicos para iniciarse en la programa
 - [Excepciones](excepciones.md)
 - [Programación Orientada a Objetos](objetos.md)
 - [Módulos](modulos.md)
+- [Filter](filter.md)
+- [Enumerate](enumerate.md)
 - [La librería Datetime](datetime.md)
 - [La librería Numpy](numpy.md)
 - [La librería Pandas](pandas.md)
