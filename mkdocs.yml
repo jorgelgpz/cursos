@@ -3,6 +3,7 @@ site_url: https://jorgelgpz.github.io/cursos/
 
 nav:
     - Inicio: 'index.md'
+    - Git: 'git/index.md'
     - Python:
       - 'python/index.md'
       - Manual:
