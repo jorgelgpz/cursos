@@ -149,3 +149,8 @@ git pull
 ````shell
  git pull <remote> <branch>
 ````
+## Clonar un Repo de GITHUB
+````shell
+git clone https://github.com/jorgelgpz/alpha.git
+````
+![git_clone.png](..%2Fassets%2Fgit_clone.png)
