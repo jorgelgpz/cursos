@@ -96,14 +96,14 @@ git checkout master
 ![git_checkout_master.png](..%2Fassets%2Fgit_checkout_master.png)
 
 ## Resetear suave el commit
-Se va a borra por ejemplo el tercer commit pero sin tocar los cambios ya realizados en los archivos.
+Se va a borrar por ejemplo el tercer commit pero sin tocar los cambios ya realizados en los archivos.
 ````shell
 git reset --soft d208f120a586e44f30d5834785b2d43929eb3db1
 ````
 ![git_reset_soft.png](..%2Fassets%2Fgit_reset_soft.png)
 
 ## Resetear duro el commit
-Se va a borra el segundo commit y también borra todos los cambios realizados en los archivos.
+Se va a borrar por ejemplo el segundo commit y también borra todos los cambios realizados en los archivos.
 ````shell
 git reset --hard 6a83bc637d9b14cb790fddf09ed65fdb212a9ea1
 ````
