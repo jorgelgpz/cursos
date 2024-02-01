@@ -4,6 +4,7 @@ site_url: https://jorgelgpz.github.io/cursos/
 nav:
     - Inicio: 'index.md'
     - Git: 'git/index.md'
+    - Sql Server: 'sql_server/index.md'
     - Python:
       - 'python/index.md'
       - Manual:
