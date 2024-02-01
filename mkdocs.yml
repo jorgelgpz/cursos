@@ -49,8 +49,8 @@ nav:
 
 theme:
   name: material
-  favicon: images/favicon.png
-  logo: assets/logo.jpg
+  # avicon: images/favicon.png
+  # logo: assets/logo.jpg
   features:
     - navigation.tabs
     - navigation.tabs.sticky

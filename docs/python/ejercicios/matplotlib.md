@@ -47,13 +47,13 @@ Escribir una función que reciba un dataframe de Pandas con los ingresos y gasto
 
 ## Ejercicio 7
 
-El fichero [`bancos.csv`](../../assets/bancos.csv) contiene las cotizaciones de los principales bancos de España con : `Empresa` (nombre de la empresa), `Apertura` (precio de la acción a la apertura de bolsa), `Máximo` (precio máximo de la acción durante la jornada), `Mínimo` (precio mínimo de la acción durante la jornada), `Cierre` (precio de la acción al cierre de bolsa), `Volumen` (volumen al cierre de bolsa). Construir una función reciba el fichero `bancos.csv` y cree un diagrama de líneas con las series temporales de las cotizaciones de cierre de cada banco.
+El fichero [`bancos.csv`](../../assets/imagenes_python/bancos.csv) contiene las cotizaciones de los principales bancos de España con : `Empresa` (nombre de la empresa), `Apertura` (precio de la acción a la apertura de bolsa), `Máximo` (precio máximo de la acción durante la jornada), `Mínimo` (precio mínimo de la acción durante la jornada), `Cierre` (precio de la acción al cierre de bolsa), `Volumen` (volumen al cierre de bolsa). Construir una función reciba el fichero `bancos.csv` y cree un diagrama de líneas con las series temporales de las cotizaciones de cierre de cada banco.
 
 <a target=blank href="https://colab.research.google.com/drive/1pi46hpNBv77PZ3AgBa24j4Cu37QBEmv9" class="btn btn-info">Solución</a>
 
 ## Ejercicio 8
 
-El fichero [titanic.csv](../../assets/titanic.csv) contiene información sobre los pasajeros del Titanic. Crear un dataframe con Pandas y a partir de él generar los siguientes diagramas.
+El fichero [titanic.csv](../../assets/imagenes_python/titanic.csv) contiene información sobre los pasajeros del Titanic. Crear un dataframe con Pandas y a partir de él generar los siguientes diagramas.
 
 1. Diagrama de sectores con los fallecidos y supervivientes.
 2. Histograma con las edades.
