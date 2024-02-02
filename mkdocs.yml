@@ -4,7 +4,11 @@ site_url: https://jorgelgpz.github.io/cursos/
 nav:
     - Inicio: 'index.md'
     - Git: 'git/index.md'
-    - Sql Server: 'sql_server/index.md'
+    - Sql Server:
+      - 'sql_server/index.md'
+      - Generalidades de base de datos: 'sql_server/manual/generalidades_de_base_de_datos.md'
+      - Modelo relacional de base de datos: 'sql_server/manual/modelo_relacional_de_base_de_datos.md'
+      - Creación de una base de datos: 'sql_server/manual/creacion_de_una_base_de_datos.md'
     - Python:
       - 'python/index.md'
       - Manual:
