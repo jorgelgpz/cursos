@@ -1,0 +1,2658 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jorgelgpz.github.io/cursos/sql_server/manual/modelo_relacional_de_base_de_datos/">
+      
+      
+        <link rel="prev" href="../generalidades_de_base_de_datos/">
+      
+      
+        <link rel="next" href="../creacion_de_una_base_de_datos/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>Modelo relacional de base de datos - Profe Jorge</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modelo-relacional-de-base-de-datos" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Profe Jorge" class="md-header__button md-logo" aria-label="Profe Jorge" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Profe Jorge
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Modelo relacional de base de datos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../git/" class="md-tabs__link">
+        
+  
+    
+  
+  Git
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Sql Server
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../python/" class="md-tabs__link">
+          
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Profe Jorge" class="md-nav__button md-logo" aria-label="Profe Jorge" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Profe Jorge
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Sql Server
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Sql Server
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manual de SQL SERVER
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../generalidades_de_base_de_datos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generalidades de base de datos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Modelo relacional de base de datos
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Modelo relacional de base de datos
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-relacional-de-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelo relacional de base de datos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-del-modelo-relacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos del modelo relacional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conceptos del modelo relacional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tablas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#columna" class="md-nav__link">
+    <span class="md-ellipsis">
+      Columna
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atributo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atributo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tupla" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tupla
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esquema-de-relacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Esquema de relación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinalidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cardinalidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instancia-de-relacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instancia de relación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clave-de-relacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clave de relación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dominio-de-atributo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dominio de atributo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restricciones-de-integridad-relacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restricciones de integridad relacional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Restricciones de integridad relacional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#las-restricciones-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Las restricciones de dominio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restricciones-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restricciones clave
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restricciones-de-integridad-referencial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restricciones de integridad referencial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mejores-practicas-para-crear-un-modelo-relacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores prácticas para crear un modelo relacional
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-de-usar-el-modelo-relacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas de usar el modelo relacional
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desventajas-de-usar-el-modelo-relacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desventajas de usar el modelo relacional
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#planificacion-de-bases-de-datos-relacionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planificación de bases de datos relacionales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Planificación de bases de datos relacionales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 7
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 8
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 9
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalizacion-de-bases-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Normalización de bases de datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Normalización de bases de datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descripcion-de-la-normalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descripción de la normalización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primera-forma-normal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primera forma normal:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#segunda-forma-normal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Segunda forma normal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tercera-forma-normal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tercera forma normal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalizacion-de-una-tabla-de-ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Normalización de una tabla de ejemplo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabla-no-normalizada" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabla no normalizada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primera-forma-normal-sin-grupos-de-repeticion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primera forma normal: sin grupos de repetición
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#segunda-forma-normal-eliminar-datos-redundantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Segunda forma normal: eliminar datos redundantes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tercera-forma-normal-eliminar-datos-que-no-dependen-de-la-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tercera forma normal: eliminar datos que no dependen de la clave
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../creacion_de_una_base_de_datos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creación de una base de datos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Programación con Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Manual
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Manual
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manual de Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/introduccion-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción a Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/tipos-datos-simples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tipos de Datos Primitivos Simples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/entrada-salida/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entrada y Salida por Terminal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/condicionales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Condicionales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/bucles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bucles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/listas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Listas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/tuplas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tuplas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/diccionarios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diccionarios
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/funciones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Funciones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/programacion-funcional/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Programación funcional
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/comprension-colecciones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comprensión de Colecciones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/ficheros/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ficheros
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/excepciones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Excepciones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/objetos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Programación Orientada a Objetos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/modulos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Módulos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/enumerate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enumerate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/datetime/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    La librería Datetime
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    La librería Numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    La librería Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    La librería Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/depuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Depuración de código
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/manual/referencias/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Referencias
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ejercicios
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ejercicios
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/ejercicios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ejercicios de Programación con Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/ejercicios/tipos-datos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tipos de Datos Simples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/ejercicios/cadenas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cadenas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/ejercicios/condicionales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Condicionales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/ejercicios/bucles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bucles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/ejercicios/listas-tuplas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Listas y Tuplas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/ejercicios/diccionarios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diccionarios
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/ejercicios/funciones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Funciones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/ejercicios/programacion-funcional/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Programación Funcional
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/ejercicios/ficheros/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ficheros
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/ejercicios/depuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Depuración
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/ejercicios/pandas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Librería Pandas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/ejercicios/matplotlib/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Librería Matplotlib
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-relacional-de-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelo relacional de base de datos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-del-modelo-relacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos del modelo relacional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conceptos del modelo relacional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tablas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#columna" class="md-nav__link">
+    <span class="md-ellipsis">
+      Columna
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atributo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atributo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tupla" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tupla
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esquema-de-relacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Esquema de relación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinalidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cardinalidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instancia-de-relacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instancia de relación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clave-de-relacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clave de relación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dominio-de-atributo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dominio de atributo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restricciones-de-integridad-relacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restricciones de integridad relacional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Restricciones de integridad relacional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#las-restricciones-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Las restricciones de dominio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restricciones-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restricciones clave
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restricciones-de-integridad-referencial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restricciones de integridad referencial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mejores-practicas-para-crear-un-modelo-relacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores prácticas para crear un modelo relacional
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-de-usar-el-modelo-relacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas de usar el modelo relacional
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desventajas-de-usar-el-modelo-relacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desventajas de usar el modelo relacional
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#planificacion-de-bases-de-datos-relacionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planificación de bases de datos relacionales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Planificación de bases de datos relacionales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 7
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 8
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 9
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalizacion-de-bases-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Normalización de bases de datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Normalización de bases de datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descripcion-de-la-normalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descripción de la normalización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primera-forma-normal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primera forma normal:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#segunda-forma-normal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Segunda forma normal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tercera-forma-normal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tercera forma normal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalizacion-de-una-tabla-de-ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Normalización de una tabla de ejemplo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabla-no-normalizada" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabla no normalizada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primera-forma-normal-sin-grupos-de-repeticion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primera forma normal: sin grupos de repetición
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#segunda-forma-normal-eliminar-datos-redundantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Segunda forma normal: eliminar datos redundantes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tercera-forma-normal-eliminar-datos-que-no-dependen-de-la-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tercera forma normal: eliminar datos que no dependen de la clave
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Modelo relacional de base de datos</h1>
+
+<h2 id="modelo-relacional-de-base-de-datos">Modelo relacional de base de datos</h2>
+<p>El modelo relacional (RM) representa la base de datos como una colección de relaciones. 
+Una relación no es más que una tabla de valores. Cada fila de la tabla representa una 
+colección de valores de datos relacionados. Estas filas de la tabla denotan una entidad o 
+relación del mundo real.</p>
+<p>El nombre de la tabla y los nombres de las columnas son útiles para interpretar el 
+significado de los valores en cada fila. Los datos se representan como un conjunto de 
+relaciones. En el modelo relacional, los datos se almacenan como tablas. Sin embargo, el 
+almacenamiento físico de los datos es independiente de la forma en que los datos están 
+organizados lógicamente.</p>
+<h2 id="conceptos-del-modelo-relacional">Conceptos del modelo relacional</h2>
+<h3 id="tablas">Tablas</h3>
+<p>En el modelo relacional, las relaciones se guardan en formato de tabla. Se almacena junto 
+con sus entidades. Una tabla tiene dos filas y columnas de propiedades. Las filas 
+representan registros y las columnas representan atributos.</p>
+<h3 id="columna">Columna</h3>
+<p>La columna representa el conjunto de valores para un atributo específico.</p>
+<h3 id="atributo">Atributo</h3>
+<p>Cada columna de una tabla. Los atributos son las propiedades que definen una relación. por 
+ejemplo, NumeroEstudiante, Nombre, etc.</p>
+<h3 id="tupla">Tupla</h3>
+<p>No es más que una sola fila de una tabla, que contiene un solo registro.</p>
+<p><img alt="columna_o_atributos.png" src="../../../assets/imagenes_sql_server/columna_o_atributos.png" /></p>
+<h3 id="esquema-de-relacion">Esquema de relación</h3>
+<p>Un esquema de relación representa el nombre de la relación con sus atributos.</p>
+<h3 id="grado">Grado</h3>
+<p>El número total de atributos que en la relación se denomina grado de relación.</p>
+<h3 id="cardinalidad">Cardinalidad</h3>
+<p>Número total de filas presentes en la tabla.</p>
+<h3 id="instancia-de-relacion">Instancia de relación</h3>
+<p>La instancia de relación es un conjunto finito de tuplas en el sistema RDBMS. Las instancias 
+de relación nunca tienen tuplas duplicadas.</p>
+<h3 id="clave-de-relacion">Clave de relación</h3>
+<p>Cada fila tiene uno, dos o varios atributos, lo que se denomina clave de relación.</p>
+<h3 id="dominio-de-atributo">Dominio de atributo</h3>
+<p>Cada atributo tiene un valor y alcance predefinidos que se conoce como dominio de 
+atributo.</p>
+<h2 id="restricciones-de-integridad-relacional">Restricciones de integridad relacional</h2>
+<p>Las restricciones de integridad relacional en DBMS se refieren a condiciones que deben 
+estar presentes para una relación válida. Estas restricciones relacionales en DBMS se 
+derivan de las reglas en el mini mundo que representa la base de datos.
+Hay muchos tipos de restricciones de integridad en DBMS. Las restricciones del sistema de 
+gestión de bases de datos relacionales se dividen principalmente en tres categorías 
+principales:</p>
+<ol>
+<li>Restricciones de dominio.</li>
+<li>Restricciones clave.</li>
+<li>Restricciones de integridad referencial.</li>
+<li>Restricciones de dominio.</li>
+</ol>
+<h3 id="las-restricciones-de-dominio">Las restricciones de dominio</h3>
+<p>Las restricciones de dominio se pueden violar si un valor de atributo no aparece en el 
+dominio correspondiente o no es del tipo de datos apropiado. Especifican que, dentro de 
+cada tupla el valor de cada atributo debe ser único. Esto se especifica como tipos de datos 
+que incluyen datos enteros, números reales, caracteres, booleanos, cadenas de longitud 
+variable, etc.</p>
+<h3 id="restricciones-clave">Restricciones clave</h3>
+<p>Un atributo que puede identificar de forma única una tupla en una relación se denomina 
+llave primaria. El valor del atributo para diferentes tuplas en la relación debe ser único.</p>
+<p>Ejemplo:
+En la tabla dada, ClienteID es un atributo clave de la tabla Clientes. Es más probable que 
+tenga una única clave para un cliente, ClienteID = 1 es solo para NombreCliente = ”Google”.</p>
+<p><img alt="restriciones_clave.png" src="../../../assets/imagenes_sql_server/restriciones_clave.png" /></p>
+<h3 id="restricciones-de-integridad-referencial">Restricciones de integridad referencial</h3>
+<p>Las restricciones de integridad referencial en DBMS se basan en el concepto de claves 
+externas. Una clave externa es un atributo importante de una relación al que se debe hacer 
+referencia en otras relaciones. El estado de restricción de integridad referencial ocurre 
+cuando la relación se refiere a un atributo clave de una relación diferente o igual. Sin 
+embargo, ese elemento clave debe existir en la tabla.</p>
+<p><img alt="restriciones_integridad_referencial.png" src="../../../assets/imagenes_sql_server/restriciones_integridad_referencial.png" /></p>
+<p>En el ejemplo anterior, tenemos 2 relaciones, Cliente y Facturación.</p>
+<p>La tupla para ClienteID = 1 se hace referencia dos veces en la relación Facturación. Entonces 
+sabemos NombreCliente = Google tiene un monto de facturación de $ 300.</p>
+<h3 id="mejores-practicas-para-crear-un-modelo-relacional">Mejores prácticas para crear un modelo relacional</h3>
+<ul>
+<li>Los datos deben representarse como una colección de relaciones.</li>
+<li>Cada relación debe describirse claramente en la tabla.</li>
+<li>Las filas deben contener datos sobre instancias de una entidad.</li>
+<li>Las columnas deben contener datos sobre los atributos de la entidad.</li>
+<li>Las celdas de la tabla deben contener un solo valor.</li>
+<li>Cada columna debe tener un nombre único.</li>
+<li>No hay dos filas que sean idénticas.</li>
+<li>Los valores de un atributo deben ser del mismo dominio.</li>
+</ul>
+<h3 id="ventajas-de-usar-el-modelo-relacional">Ventajas de usar el modelo relacional</h3>
+<ul>
+<li><strong>Simplicidad:</strong> un modelo de datos relacionales en DBMS es más simple que el modelo 
+jerárquico y de red.</li>
+<li><strong>Independencia estructural:</strong> la base de datos relacional solo se ocupa de los datos y 
+no de una estructura. Esto puede mejorar el rendimiento del modelo.</li>
+<li><strong>Fácil de usar:</strong> el modelo relacional en DBMS es fácil ya que las tablas que constan de 
+filas y columnas son bastante naturales y fáciles de entender.</li>
+<li><strong>Capacidad de consulta:</strong> hace posible que un lenguaje de consulta de alto nivel como
+SQL evite la navegación compleja en la base de datos.</li>
+<li><strong>Independencia de los datos:</strong> la estructura de la base de datos relacional se puede 
+cambiar sin tener que cambiar ninguna aplicación.</li>
+<li><strong>Escalable:</strong> con respecto a una cantidad de registros, o filas, y la cantidad de campos, 
+una base de datos debe ampliarse para mejorar su usabilidad.</li>
+</ul>
+<h3 id="desventajas-de-usar-el-modelo-relacional">Desventajas de usar el modelo relacional</h3>
+<ul>
+<li>Pocas bases de datos relacionales tienen límites en la longitud de los campos que no 
+se pueden exceder.</li>
+<li>Las bases de datos relacionales a veces pueden volverse complejas a medida que 
+aumenta la cantidad de datos y las relaciones entre los datos se vuelven más 
+complicadas.</li>
+<li>Los sistemas de bases de datos relacionales complejos pueden conducir a bases de 
+datos aisladas donde la información no se puede compartir de un sistema a otro.</li>
+</ul>
+<h2 id="planificacion-de-bases-de-datos-relacionales">Planificación de bases de datos relacionales</h2>
+<h3 id="paso-1">Paso 1</h3>
+<p>Determine las categorías de información que necesitará la base de datos relacional. Estas 
+categorías serán las tablas de la base de datos. Por ejemplo, una base de datos de ventas 
+puede incluir estas tablas: Clientes, que incluye información de clientes; Facturas, que 
+incluye información de pedidos; y Productos, que incluye información de productos.</p>
+<p><img alt="paso1.png" src="../../../assets/imagenes_sql_server/paso1.png" /></p>
+<h3 id="paso-2">Paso 2</h3>
+<p>Determine cómo se relacionan entre sí las tablas. Para ello, escriba frases sencillas que 
+describan la forma en la que interactúan las categorías como, por ejemplo, "los clientes 
+realizan pedidos de productos" y "las facturas registran los pedidos de los clientes".</p>
+<h3 id="paso-3">Paso 3</h3>
+<p>Conecte una tabla a otra para indicar una relación entre ellas. Por ejemplo, un cliente puede 
+tener facturas y las facturas pueden tener productos.</p>
+<p>Si una tabla no tiene ninguna relación con otra, es probable que sea innecesaria. En este 
+ejemplo, la tabla Empleados no se ajusta a esa base de datos relacional o al menos al 
+fragmento de base de datos que desea crear en ese momento.</p>
+<p><img alt="paso3.png" src="../../../assets/imagenes_sql_server/paso3.png" /></p>
+<h3 id="paso-4">Paso 4</h3>
+<p>Indique el tipo de relación entre las tablas conectándolas con un símbolo representativo. En 
+una relación de uno a uno, un registro de la Tabla A se asocia a un registro de la Tabla B.</p>
+<p>En una relación de uno a muchos, un registro de la Tabla A se asocia a varios registros de la 
+Tabla B.
+En una relación de muchos a muchos, varios registros de la Tabla A se asocian a varios 
+registros de la Tabla B.</p>
+<p><img alt="paso4.png" src="../../../assets/imagenes_sql_server/paso4.png" /></p>
+<p>En este ejemplo se muestra que:</p>
+<ul>
+<li>Un cliente puede tener muchas facturas.</li>
+<li>Un producto puede aparecer en muchas facturas.</li>
+<li>Una factura puede tener muchos productos.</li>
+</ul>
+<h3 id="paso-5">Paso 5</h3>
+<p>Tenga en cuenta que hay una relación de muchos a muchos entre Facturas y Productos. No 
+puede configurar directamente una relación de muchos a muchos entre las dos tablas.
+Las bases de datos relacionales administran directamente las relaciones de uno a uno y de 
+uno a muchos. Debe resolver la relación de muchos a muchos mediante una tabla 
+intermedia, que divida la relación de muchos a muchos en dos relaciones de uno a muchos. 
+Para solucionar el problema en este ejemplo, añada la tabla intermedia Elementos de línea 
+para almacenar información sobre los productos vendidos.</p>
+<p><img alt="paso5.png" src="../../../assets/imagenes_sql_server/paso5.png" /></p>
+<p>Tras resolver la relación de muchos a muchos, en este ejemplo se muestra que:
+- Un cliente puede tener muchas facturas.
+- Una factura puede tener muchos elementos de línea.
+- Un producto puede aparecer en muchos elementos de línea.</p>
+<h3 id="paso-6">Paso 6</h3>
+<p>Determine los campos que necesitará cada tabla. Cada tabla tiene sólo un tema, y todos 
+los campos de esa tabla hacen referencia únicamente a ese tema. Por ejemplo, los campos 
+de un registro de la tabla Clientes almacenan toda la información sobre un cliente.</p>
+<p>Por este motivo, debe asignar a cada cliente un número de identificación exclusivo. En la 
+base de datos, esta es la clave principal. No introduciría ningún número de identificación de 
+cliente en la tabla a no ser que tuviera que añadir un cliente nuevo. Por lo tanto, la 
+existencia de un número de cliente determina la existencia de un registro. La tabla Clientes 
+puede también incluir campos para el nombre, la dirección y el número de teléfono del 
+cliente.</p>
+<p>La tabla Productos puede incluir campos para el número de identificación del producto, el 
+precio por unidad de cada producto y la cantidad disponible en existencias. La tabla 
+Elementos de línea puede incluir campos para los números de identificación de productos y 
+facturas, así como para el nombre, el precio por unidad, la cantidad y el precio total de 
+cada artículo vendido. La tabla Facturas puede incluir campos para el número de 
+identificación de facturas, la fecha del pedido y el vendedor.</p>
+<p><img alt="paso6.png" src="../../../assets/imagenes_sql_server/paso6.png" /></p>
+<h3 id="paso-7">Paso 7</h3>
+<p>Determine el campo de clave principal (o campos para una relación de varios criterios) 
+para cada tabla e indique cada uno en su plan. A continuación, indique el campo o los 
+campos de clave externa de cada tabla.
+En este ejemplo:</p>
+<ul>
+<li>Las claves principales son Clientes::ID de cliente, Facturas::ID de factura, Productos::ID 
+del producto y Elementos de línea::ID de elemento.</li>
+<li>Las claves externas son Facturas::ID de cliente y Elementos de línea::ID del producto.</li>
+</ul>
+<p>Para mostrar datos de clientes en la tabla Facturas, debe tener un campo común entre las 
+dos tablas a fin de crear una relación. ID de cliente es el campo común. En la tabla Clientes, 
+es la clave principal; en la tabla Facturas, es la clave externa.</p>
+<p>En la tabla Elementos de línea, ID del producto es el campo común entre las tablas 
+Elementos de línea y Productos. En la tabla ID del producto, este campo es la clave 
+principal; en la tabla Elementos de línea, es la clave externa.</p>
+<p>Estos campos de clave son del tipo llave foránea.</p>
+<p><img alt="paso7.png" src="../../../assets/imagenes_sql_server/paso7.png" /></p>
+<h3 id="paso-8">Paso 8</h3>
+<p>En cada una de las tablas, establezca qué campos van a almacenar datos y cuáles se 
+usarán desde otras tablas relacionadas.</p>
+<p>En función del tema de la tabla, puede comprobar en qué ubicación es más lógico 
+almacenar los datos y dónde se deben utilizar los datos de una tabla relacionada. Todos los 
+campos de clave deberían aparecer solo una vez en la base de datos, a excepción de los 
+campos de coincidencia. Elimine las ocurrencias de los campos que no pertenezcan al tema 
+de la tabla.</p>
+<p><img alt="paso8.png" src="../../../assets/imagenes_sql_server/paso8.png" /></p>
+<h3 id="paso-9">Paso 9</h3>
+<p>Conecte cada clave principal con su clave externa(llave foránea) correspondiente en la 
+tabla relacionada.</p>
+<p>Lo que establece una relación entre tablas es que sus campos de clave contienen datos que 
+coinciden con los criterios de la relación.</p>
+<p><img alt="paso9.png" src="../../../assets/imagenes_sql_server/paso9.png" /></p>
+<p>Este plan indica ahora:</p>
+<ul>
+<li>Un cliente puede tener muchas facturas diferentes, pero una factura individual 
+puede tener solo un cliente.</li>
+<li>Una factura puede tener muchos elementos de línea, pero solo un elemento de línea 
+individual aparece en una factura.</li>
+<li>Un producto puede aparecer en muchos elementos de línea diferentes, pero un 
+elemento de línea individual solo tiene un producto.</li>
+</ul>
+<h2 id="normalizacion-de-bases-de-datos">Normalización de bases de datos</h2>
+<h3 id="descripcion-de-la-normalizacion">Descripción de la normalización</h3>
+<p>La normalización es el proceso de organización de datos en una base de datos. Esto incluye 
+crear tablas y establecer relaciones entre dichas tablas de acuerdo con reglas diseñadas 
+tanto para proteger los datos como para que la base de datos sea más flexible al eliminar 
+la redundancia y la dependencia incoherente.</p>
+<p>Los datos redundantes desperdician espacio en disco y crean problemas de mantenimiento. 
+Si se deben cambiar los datos que existen en más de un lugar, los datos deben cambiarse 
+exactamente del mismo modo en todas las ubicaciones. Un cambio de dirección de cliente 
+es mucho más fácil de implementar si los datos se almacenan solo en la tabla Clientes y en 
+ninguna otra parte de la base de datos.</p>
+<p>Existen algunas reglas para la normalización de la base de datos. Cada regla se denomina 
+"formulario normal". Si se observa la primera regla, se dice que la base de datos está en 
+"primera forma normal". Si se observan las tres primeras reglas, se considera que la base 
+de datos está en "tercera forma normal". Aunque otros niveles de normalización son 
+posibles, la tercera forma normal se considera el nivel más alto necesario para la mayoría 
+de las aplicaciones.</p>
+<p>Al igual que con muchas reglas y especificaciones formales, los escenarios del mundo real 
+no siempre permiten el cumplimiento perfecto. En general, la normalización requiere tablas 
+adicionales y algunos clientes lo encuentran engorroso. Si decide infringir una de las tres 
+primeras reglas de normalización, asegúrese de que la aplicación anticipe cualquier 
+problema que pueda producirse, como datos redundantes y dependencias incoherentes.</p>
+<p>Las descripciones siguientes incluyen ejemplos.</p>
+<h3 id="primera-forma-normal">Primera forma normal:</h3>
+<ul>
+<li>Elimine los grupos de repetición en tablas individuales.</li>
+<li>Cree una tabla independiente para cada conjunto de datos relacionados.</li>
+<li>Identifique cada conjunto de datos relacionados con una clave principal.</li>
+</ul>
+<p>No use varios campos en una sola tabla para almacenar datos similares. Por ejemplo, para 
+realizar un seguimiento de un elemento de inventario que puede venir de dos orígenes 
+posibles, un registro de inventario puede contener campos para Código de proveedor 1 y 
+Código de proveedor 2.</p>
+<p>¿Qué sucede cuando se agrega un tercer proveedor? Agregar un campo no es la respuesta; 
+requiere modificaciones de programa y tabla y no se adapta sin problemas a un número 
+dinámico de proveedores. En su lugar, coloque toda la información del proveedor en una 
+tabla independiente denominada Proveedores y, a continuación, vincule el inventario a los 
+proveedores con una clave de número de elemento o proveedores para realizar un 
+inventario con una clave de código de proveedor.</p>
+<h3 id="segunda-forma-normal">Segunda forma normal</h3>
+<ul>
+<li>Cree tablas independientes para conjuntos de valores que se aplican a varios 
+registros.</li>
+<li>Relaciona estas tablas con una clave externa.</li>
+</ul>
+<p>Los registros no deben depender de nada que no sea la clave principal de una tabla (una 
+clave compuesta, si es necesario). Por ejemplo, considere la dirección de un cliente en un 
+sistema de contabilidad. La dirección es necesaria para la tabla Clientes, pero también para 
+las tablas Pedidos, Envío, Facturas, Clientes y Colecciones. En lugar de almacenar la 
+dirección del cliente como una entrada independiente en cada una de estas tablas, 
+guárdala en un solo lugar, ya sea en la tabla Clientes o en una tabla Direcciones 
+independiente.</p>
+<h3 id="tercera-forma-normal">Tercera forma normal</h3>
+<ul>
+<li>Elimine los campos que no dependen de la clave.</li>
+</ul>
+<p>Los valores de un registro que no forman parte de la clave de ese registro no pertenecen a 
+la tabla. En general, cada vez que el contenido de un grupo de campos se pueda aplicar a más de un único registro de la tabla, considere la posibilidad de colocar esos campos en 
+una tabla independiente.</p>
+<p>Por ejemplo, en una tabla contratación de empleados, se puede incluir el nombre 
+universitario y la dirección de un candidato. Pero necesita una lista completa de 
+universidades para los envíos de correo en grupo. Si la información de la universidad se 
+almacena en la tabla Candidatos, no hay forma de enumerar las universidades sin 
+candidatos actuales. Cree una tabla Universidades independiente y vincule a la tabla 
+Candidatos con una clave de código universitario.</p>
+<p><strong>EXCEPCIÓN:</strong> El cumplimiento de la tercera forma normal, aunque teóricamente deseable, no 
+siempre es práctico. Si tiene una tabla Clientes y desea eliminar todas las dependencias 
+entre campos posibles, debe crear tablas independientes para ciudades, códigos POSTAL
+es, representantes de ventas, clases de clientes y cualquier otro factor que pueda duplicarse 
+en varios registros. En teoría, la normalización vale la pena purgar. Sin embargo, muchas 
+tablas pequeñas pueden degradar el rendimiento o superar las capacidades de memoria y 
+archivo abiertos.</p>
+<p>Puede ser más factible aplicar la tercera forma normal solo a los datos que cambian con 
+frecuencia. Si algunos campos dependientes permanecen, diseñe la aplicación para requerir 
+que el usuario compruebe todos los campos relacionados cuando se cambie alguno.</p>
+<p><strong>Otras formas normales</strong></p>
+<p>La cuarta forma normal, también llamada Formal normal codd de Boyce (BCNF), y la
+quinta forma normal existen, pero rara vez se consideran en diseño práctico. Si se ignoran 
+estas reglas, es posible que el diseño de la base de datos sea menor que perfecto, pero no 
+debería afectar a la funcionalidad.</p>
+<h3 id="normalizacion-de-una-tabla-de-ejemplo">Normalización de una tabla de ejemplo</h3>
+<p>Estos pasos muestran el proceso de normalización de una tabla de estudiantes ficticia.</p>
+<h3 id="tabla-no-normalizada">Tabla no normalizada</h3>
+<p><img alt="tabla1.png" src="../../../assets/imagenes_sql_server/tabla1.png" /></p>
+<h3 id="primera-forma-normal-sin-grupos-de-repeticion">Primera forma normal: sin grupos de repetición</h3>
+<p>Las tablas solo deben tener dos dimensiones. Dado que un alumno tiene varias clases, estas 
+clases deben aparecer en una tabla independiente. Los campos Class1, Class2 y Class3 de 
+los registros anteriores son indicaciones de problemas de diseño.
+Las hojas de cálculo suelen usar la tercera dimensión, pero las tablas no deben hacerlo. 
+Otra forma de ver este problema es con una relación de uno a varios, no ponga el lado uno 
+y los muchos en la misma tabla. En su lugar, crea otra tabla en primera forma normal 
+eliminando el grupo de repetición (Clase#), como se muestra a continuación:</p>
+<p><img alt="tabla2.png" src="../../../assets/imagenes_sql_server/tabla2.png" /></p>
+<h3 id="segunda-forma-normal-eliminar-datos-redundantes">Segunda forma normal: eliminar datos redundantes</h3>
+<p>Tenga en cuenta los varios valores class# para cada valor Student# de la tabla anterior. 
+Class# no depende funcionalmente de Student# (clave principal), por lo que esta relación 
+no está en segundo formato normal.
+Las tablas siguientes muestran el Segunda forma normal:</p>
+<p><img alt="tabla3.png" src="../../../assets/imagenes_sql_server/tabla3.png" /></p>
+<p><img alt="tabla4.png" src="../../../assets/imagenes_sql_server/tabla4.png" /></p>
+<h3 id="tercera-forma-normal-eliminar-datos-que-no-dependen-de-la-clave">Tercera forma normal: eliminar datos que no dependen de la clave</h3>
+<p>En el último ejemplo, Adv-Room (número de oficina del asesor) depende funcionalmente del 
+atributo Advisor. La solución es mover ese atributo de la tabla Estudiantes a la tabla 
+Profesor, como se muestra a continuación:</p>
+<p><img alt="tabla5.png" src="../../../assets/imagenes_sql_server/tabla5.png" /></p>
+<p><img alt="tabla6.png" src="../../../assets/imagenes_sql_server/tabla6.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../generalidades_de_base_de_datos/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Generalidades de base de datos">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Generalidades de base de datos
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../creacion_de_una_base_de_datos/" class="md-footer__link md-footer__link--next" aria-label="Next: Creación de una base de datos">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Creación de una base de datos
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "content.code.annotate", "navigation.footer", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
